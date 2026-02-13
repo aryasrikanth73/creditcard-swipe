@@ -67,7 +67,6 @@
             border-radius: 20px; padding: 24px; margin: 25px 0; font-size: 1.05rem; line-height: 1.5;
         }
 
-        /* Buttons Fix */
         .promo-btn-group { display: flex; gap: 12px; width: 100%; }
         .btn-promo {
             flex: 1; height: 60px; border-radius: 16px; font-weight: 700; text-decoration: none;
@@ -415,7 +414,6 @@
 
                                 <div class="calc-panel" id="calcSection">
                                     <div class="d-flex justify-content-between mb-0 small"><span>Principal:</span><span id="dispAmount">₹0</span></div>
-                                    <div class="d-flex justify-content-between mb-0 small opacity-75"><span id="dispChargeLabel">Fee (0%):</span><span id="dispFee">₹0</span></div>
                                     <div class="d-flex justify-content-between fw-800 border-top border-white border-opacity-25 pt-1 mt-1"><span>Net Settlement:</span><span id="dispNet">₹0</span></div>
                                 </div>
 
@@ -477,8 +475,6 @@
             const f = (a * p) / 100;
             const n = a - f;
             document.getElementById('dispAmount').innerText = '₹' + a.toLocaleString('en-IN');
-            document.getElementById('dispChargeLabel').innerText = `Fee (${p}%):`;
-            document.getElementById('dispFee').innerText = '₹' + f.toLocaleString('en-IN', {minimumFractionDigits: 2});
             document.getElementById('dispNet').innerText = '₹' + n.toLocaleString('en-IN', {minimumFractionDigits: 2});
         };
         amtIn.addEventListener('input', updateCalc);
