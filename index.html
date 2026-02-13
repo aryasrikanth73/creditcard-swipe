@@ -33,7 +33,7 @@
 
         h1, h2, h3, h4, .navbar-brand { font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.02em; }
 
-        /* Navigation */
+        /* Navigation - Lower Z-index than Modal */
         .navbar {
             padding: 1rem 0;
             background: rgba(255, 255, 255, 0.9) !important;
@@ -133,6 +133,28 @@
 
         .trust-note { font-size: 10.5px; line-height: 1.4; color: #64748b; margin-top: 10px; text-align: center; }
 
+        /* RATE CARDS SAME HEIGHT FIX */
+        .col-rate-card { display: flex; flex-direction: column; }
+        .rate-card-content { 
+            height: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between;
+            background: white; 
+            border: 1px solid var(--surface-100); 
+            border-radius: 24px; 
+            padding: 30px 15px; 
+            text-align: center;
+            transition: all 0.3s ease; 
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .rate-card-content:hover {
+            border-color: var(--brand-accent);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+        }
+
         .site-footer { background: var(--brand-primary); color: #cbd5e1; padding: 60px 0 60px; border-top: 1px solid rgba(255,255,255,0.05); }
 
         @media (max-width: 991px) {
@@ -145,7 +167,7 @@
         }
 
         @media (max-width: 768px) {
-            .modal-dialog { margin-left: 15px; margin-right: 15px; } /* Space at edges */
+            .modal-dialog { margin-left: 15px; margin-right: 15px; }
             .hero-section { padding: 100px 0 40px; }
             .display-3 { font-size: 2.2rem; }
             .main-rate-display { font-size: 3.5rem; }
@@ -184,7 +206,7 @@
                         Immediate cash liquidity with 100% security. Join thousands of happy Hyderabadis managing their cash flow daily.
                     </p>
                     <div class="d-none d-lg-flex align-items-center gap-3">
-                         <img src="https://images.unsplash.com/photo-1556740714-a8395b3bf30f?w=400&q=80" class="rounded-4 shadow-lg" style="width: 120px; height: 70px; object-fit: cover;" alt="Trusted Agent">
+                         <img src="https://images.unsplash.com/photo-1573163231162-8352cf20dd44?w=400&auto=format&fit=crop&q=80" class="rounded-4 shadow-lg" style="width: 120px; height: 70px; object-fit: cover;" alt="Trusted Agent">
                          <span class="fw-800 text-primary small">Trusted Local Partner</span>
                     </div>
                 </div>
@@ -216,8 +238,8 @@
     <section class="py-5">
         <div class="container px-4">
             <div class="row align-items-center g-5 text-center text-md-start">
-                <div class="col-md-6 order-md-2">
-                    <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=800&q=80" class="img-satisfaction" alt="Happy Customer">
+                <div class="col-md-6 order-md-2 text-center">
+                    <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=800&auto=format&fit=crop&q=80" class="img-satisfaction" alt="Happy Customer">
                 </div>
                 <div class="col-md-6">
                     <h2 class="fw-800 mb-4 text-brand-primary">Fast Cash for Happy Faces. 😊</h2>
@@ -227,25 +249,29 @@
         </div>
     </section>
 
-    <!-- Standard Rates -->
+    <!-- Standard Rates - SAME HEIGHT CARDS -->
     <section class="py-5 bg-light rounded-5 mx-2 mx-lg-5">
         <div class="container px-4 text-center">
             <h3 class="fw-800 mb-1">Standard Swipe Rates</h3>
             <p class="text-muted small mb-5">Clear charges. Instant bank transfer.</p>
-            <div class="row g-3 justify-content-center">
-                <div class="col-6 col-md-5 col-lg-4">
-                    <div class="bg-white border rounded-4 p-4 text-center shadow-sm cursor-pointer hover-lift" data-bs-toggle="modal" data-bs-target="#swipeModal" data-card-type="VISA & RUPAY" data-percent="1.7" style="cursor: pointer;">
-                        <img src="https://img.icons8.com/color/96/visa.png" width="48" alt="Visa">
-                        <div class="small fw-800 text-muted opacity-50 mt-1">VISA & RUPAY</div>
-                        <div class="h2 fw-800 text-primary my-2">1.7%</div>
+            <div class="row g-3 justify-content-center align-items-stretch">
+                <div class="col-6 col-md-5 col-lg-4 col-rate-card">
+                    <div class="rate-card-content shadow-sm" data-bs-toggle="modal" data-bs-target="#swipeModal" data-card-type="VISA & RUPAY" data-percent="1.7">
+                        <div>
+                            <img src="https://img.icons8.com/color/96/visa.png" width="48" alt="Visa">
+                            <div class="small fw-800 text-muted opacity-50 mt-1">VISA & RUPAY</div>
+                            <div class="h2 fw-800 text-primary my-2">1.7%</div>
+                        </div>
                         <div class="text-primary fw-700 small">Start <i class="fas fa-arrow-right ms-1"></i></div>
                     </div>
                 </div>
-                <div class="col-6 col-md-5 col-lg-4">
-                    <div class="bg-white border rounded-4 p-4 text-center shadow-sm cursor-pointer hover-lift" data-bs-toggle="modal" data-bs-target="#swipeModal" data-card-type="MASTERCARD" data-percent="2.0" style="cursor: pointer;">
-                        <img src="https://img.icons8.com/color/96/mastercard.png" width="48" alt="Mastercard">
-                        <div class="small fw-800 text-muted opacity-50 mt-1">MASTERCARD</div>
-                        <div class="h2 fw-800 text-primary my-2">2.0%</div>
+                <div class="col-6 col-md-5 col-lg-4 col-rate-card">
+                    <div class="rate-card-content shadow-sm" data-bs-toggle="modal" data-bs-target="#swipeModal" data-card-type="MASTERCARD" data-percent="2.0">
+                        <div>
+                            <img src="https://img.icons8.com/color/96/mastercard.png" width="48" alt="Mastercard">
+                            <div class="small fw-800 text-muted opacity-50 mt-1">MASTERCARD</div>
+                            <div class="h2 fw-800 text-primary my-2">2.0%</div>
+                        </div>
                         <div class="text-primary fw-700 small">Start <i class="fas fa-arrow-right ms-1"></i></div>
                     </div>
                 </div>
@@ -259,25 +285,25 @@
             <h4 class="fw-800 mb-5">Professional 4-Step Process</h4>
             <div class="row g-4">
                 <div class="col-6 col-lg-3">
-                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=400&q=80" class="process-img shadow-sm" alt="Consultation">
+                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=400&auto=format&fit=crop&q=80" class="process-img shadow-sm" alt="Consultation">
                     <div class="step-num">1</div>
                     <h6 class="fw-800">Consult</h6>
                     <p class="small text-muted">Talk to Local Rep</p>
                 </div>
                 <div class="col-6 col-lg-3">
-                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&q=80" class="process-img shadow-sm" alt="Verify">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&auto=format&fit=crop&q=80" class="process-img shadow-sm" alt="Verify">
                     <div class="step-num">2</div>
                     <h6 class="fw-800">Verify</h6>
                     <p class="small text-muted">Quick Documentation</p>
                 </div>
                 <div class="col-6 col-lg-3">
-                    <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?w=400&q=80" class="process-img shadow-sm" alt="Swipe">
+                    <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?w=400&auto=format&fit=crop&q=80" class="process-img shadow-sm" alt="Swipe">
                     <div class="step-num">3</div>
                     <h6 class="fw-800">Swipe</h6>
                     <p class="small text-muted">Authorized Terminal</p>
                 </div>
                 <div class="col-6 col-lg-3">
-                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&q=80" class="process-img shadow-sm" alt="Receive Cash">
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&auto=format&fit=crop&q=80" class="process-img shadow-sm" alt="Receive Cash">
                     <div class="step-num">4</div>
                     <h6 class="fw-800">Receive</h6>
                     <p class="small text-muted">Immediate Settlement</p>
@@ -293,7 +319,7 @@
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="testimonial-card">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop" class="client-avatar" alt="Reviewer">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&auto=format&fit=crop&q=80" class="client-avatar" alt="Reviewer">
                         <div class="text-warning mb-2 small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="small text-muted mb-0">"Excellent service in Kukatpally. Settlement was instant and professional. Best rates I found in the city."</p>
                         <h6 class="fw-800 small mt-3 mb-0 text-primary">Ravi – Kukatpally</h6>
@@ -301,7 +327,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="testimonial-card">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop" class="client-avatar" alt="Reviewer">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&auto=format&fit=crop&q=80" class="client-avatar" alt="Reviewer">
                         <div class="text-warning mb-2 small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="small text-muted mb-0">"Reliable for business needs. Their 2.5% bill payment service is a lifesaver for managing cash flow."</p>
                         <h6 class="fw-800 small mt-3 mb-0 text-primary">Imran – Tolichowki</h6>
@@ -309,7 +335,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="testimonial-card">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop" class="client-avatar" alt="Reviewer">
+                        <img src="https://images.unsplash.com/photo-1544168190-79c17527004f?w=150&h=150&auto=format&fit=crop&q=80" class="client-avatar" alt="Reviewer">
                         <div class="text-warning mb-2 small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="small text-muted mb-0">"Quick and honest. I use them regularly for my urgent liquidity needs. Highly recommended."</p>
                         <h6 class="fw-800 small mt-3 mb-0 text-primary">Suresh – LB Nagar</h6>
@@ -346,8 +372,7 @@
                     <i class="fas fa-times"></i>
                 </button>
                 
-                <div class="modal-header px-4 py-2 bg-primary text-white border-0" style="min-height: 45px;">
-                    <!-- Title removed as per request -->
+                <div class="modal-header px-4 py-1 bg-primary text-white border-0" style="min-height: 45px;">
                 </div>
                 <div class="modal-body">
                     <div class="d-flex inline-modal-container">
@@ -414,6 +439,7 @@
 
                                 <div class="calc-panel" id="calcSection">
                                     <div class="d-flex justify-content-between mb-0 small"><span>Principal:</span><span id="dispAmount">₹0</span></div>
+                                    <div class="d-flex justify-content-between mb-0 small opacity-75"><span>Service Fee:</span><span id="dispFee">₹0</span></div>
                                     <div class="d-flex justify-content-between fw-800 border-top border-white border-opacity-25 pt-1 mt-1"><span>Net Settlement:</span><span id="dispNet">₹0</span></div>
                                 </div>
 
@@ -475,6 +501,7 @@
             const f = (a * p) / 100;
             const n = a - f;
             document.getElementById('dispAmount').innerText = '₹' + a.toLocaleString('en-IN');
+            document.getElementById('dispFee').innerText = '₹' + f.toLocaleString('en-IN', {minimumFractionDigits: 2});
             document.getElementById('dispNet').innerText = '₹' + n.toLocaleString('en-IN', {minimumFractionDigits: 2});
         };
         amtIn.addEventListener('input', updateCalc);
