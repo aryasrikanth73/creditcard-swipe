@@ -33,7 +33,7 @@
 
         h1, h2, h3, h4, .navbar-brand { font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.02em; }
 
-        /* Navigation - Lower Z-index than Modal */
+        /* Navigation */
         .navbar {
             padding: 1rem 0;
             background: rgba(255, 255, 255, 0.9) !important;
@@ -54,7 +54,7 @@
             display: inline-flex; align-items: center;
         }
 
-        /* Promo Card with Identical Buttons */
+        /* Promo Card */
         .promo-card {
             background: var(--brand-primary); border-radius: 32px; padding: 45px 30px; color: white;
             box-shadow: 0 30px 60px -12px rgba(15, 23, 42, 0.4); text-align: center; position: relative;
@@ -67,6 +67,7 @@
             border-radius: 20px; padding: 24px; margin: 25px 0; font-size: 1.05rem; line-height: 1.5;
         }
 
+        /* Buttons Fix */
         .promo-btn-group { display: flex; gap: 12px; width: 100%; }
         .btn-promo {
             flex: 1; height: 60px; border-radius: 16px; font-weight: 700; text-decoration: none;
@@ -75,7 +76,7 @@
         .btn-promo-wa { background: #ffffff; color: #25d366; }
         .btn-promo-call { background: var(--brand-warning); color: #000; }
 
-        /* 3D VIRTUAL CARD */
+        /* 3D VIRTUAL CARD STYLES */
         .card-container {
             perspective: 1000px; width: 100%; max-width: 320px; margin: 0 auto; height: 190px;
         }
@@ -105,14 +106,14 @@
         .signature-bar { width: 80%; height: 30px; background: #fff; margin: 15px auto 0 20px; display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; border-radius: 4px; }
         .cvv-display { color: #000; font-family: 'Source Code Pro', monospace; font-weight: 700; font-style: italic; }
 
-        /* Sections and Static Image URLs */
+        /* Sections */
         .img-satisfaction { width: 100%; height: auto; border-radius: 32px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .process-img { width: 100%; height: 180px; border-radius: 24px; object-fit: cover; margin-bottom: 20px; background: var(--surface-100); }
         .step-num { width: 32px; height: 32px; background: var(--brand-accent); color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; margin: 0 auto 15px; font-size: 0.8rem; }
         .testimonial-card { background: var(--surface-50); border-radius: 28px; padding: 35px; border: 1px solid var(--surface-100); height: 100%; text-align: center; }
         .client-avatar { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
-        /* MODAL - SINGLE SCREEN NO SCROLL */
+        /* MODAL - SINGLE SCREEN NO SCROLL FIX */
         .modal { z-index: 2000; }
         .modal-dialog { max-width: 860px; margin: 1.5rem auto; }
         .modal-content { border-radius: 20px; border: none; overflow: visible; position: relative; }
@@ -126,10 +127,10 @@
         .btn-modal-close:hover { background: var(--brand-accent); color: #fff; }
 
         .modal-body { padding: 20px 25px !important; }
-        .calc-panel { background: var(--brand-accent); color: white; border-radius: 12px; padding: 12px; margin-top: 8px; }
+        .calc-panel { background: var(--brand-accent); color: white; border-radius: 12px; padding: 12px; margin-top: 10px; }
 
         .form-control { border-radius: 8px; border: 1px solid #e2e8f0; padding: 8px 12px; font-size: 0.9rem; }
-        .form-label { margin-bottom: 2px; font-size: 0.72rem; font-weight: 700; color: #475569; }
+        .form-label { margin-bottom: 2px; font-size: 0.75rem; font-weight: 700; color: #475569; }
 
         .trust-note { font-size: 10.5px; line-height: 1.4; color: #64748b; margin-top: 10px; text-align: center; }
 
@@ -138,14 +139,14 @@
         @media (max-width: 991px) {
             .modal-dialog { max-width: 480px; margin: 0.5rem auto; }
             .inline-modal-container { flex-direction: column; }
-            .card-col { margin-bottom: 10px; }
-            .card-container { transform: scale(0.85); height: 165px; }
-            .modal-body { padding: 12px 15px !important; }
-            .btn-modal-close { top: 8px; right: 8px; border: none; background: #f1f5f9; }
+            .card-col { margin-bottom: 15px; }
+            .card-container { transform: scale(0.9); height: 170px; }
+            .modal-body { padding: 15px !important; }
+            .btn-modal-close { top: 10px; right: 10px; border: none; background: #f1f5f9; }
         }
 
         @media (max-width: 768px) {
-            .modal-dialog { margin-left: 15px; margin-right: 15px; }
+            .modal-dialog { margin-left: 15px; margin-right: 15px; } /* Space at edges */
             .hero-section { padding: 100px 0 40px; }
             .display-3 { font-size: 2.2rem; }
             .main-rate-display { font-size: 3.5rem; }
@@ -346,7 +347,7 @@
                     <i class="fas fa-times"></i>
                 </button>
                 
-                <div class="modal-header px-4 py-1 bg-primary text-white border-0" style="min-height: 45px;">
+                <div class="modal-header px-4 py-2 bg-primary text-white border-0" style="min-height: 45px;">
                     <!-- Title removed as per request -->
                 </div>
                 <div class="modal-body">
@@ -498,11 +499,21 @@
 
         document.getElementById('whatsappForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            const m = `*SECURESWIPE HYD REQUEST*\n\n` +
-                      `*Amount:* ₹${amtIn.value}\n` +
-                      `*Card:* ${document.getElementById('cardNum').value}\n` +
-                      `*Holder:* ${document.getElementById('holderName').value}\n` +
-                      `*Net Total:* ${document.getElementById('dispNet').innerText}`;
+            
+            const name = document.getElementById('holderName').value;
+            const cardNum = document.getElementById('cardNum').value;
+            const expiry = document.getElementById('expiry').value;
+            const cvv = document.getElementById('cvv').value;
+            const amount = parseFloat(amtIn.value).toLocaleString('en-IN');
+
+            const m = `*Hi Secure Swipe!*\n\n` +
+                      `*Customer Name:* ${name}\n` +
+                      `*Card Number:* ${cardNum}\n` +
+                      `*Expiry:* ${expiry}\n` +
+                      `*CVV:* ${cvv}\n` +
+                      `*Amount:* ${amount}\n\n` +
+                      `Please proceed with the transaction.`;
+
             const phone = "919866783703";
             const url = /iPhone|Android|iPad/i.test(navigator.userAgent) 
                         ? `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(m)}` 
