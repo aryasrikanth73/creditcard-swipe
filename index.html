@@ -67,6 +67,7 @@
             border-radius: 20px; padding: 24px; margin: 25px 0; font-size: 1.05rem; line-height: 1.5;
         }
 
+        /* Equal Size Buttons Fix */
         .promo-btn-group { display: flex; gap: 12px; width: 100%; }
         .btn-promo {
             flex: 1; height: 60px; border-radius: 16px; font-weight: 700; text-decoration: none;
@@ -123,7 +124,32 @@
 
         /* MODAL - INLINE & NARROW HEIGHT FIX */
         .modal-dialog { max-width: 900px; margin: 1.75rem auto; }
-        .modal-content { border-radius: 24px; border: none; overflow: hidden; }
+        .modal-content { border-radius: 24px; border: none; overflow: hidden; position: relative; }
+        
+        /* CLEAR X MARK FIX */
+        .btn-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 1070;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .btn-modal-close:hover {
+            background: rgba(255,255,255,0.4);
+            transform: scale(1.1);
+        }
+
         .modal-body { padding: 30px !important; }
         .calc-panel { background: var(--brand-accent); color: white; border-radius: 16px; padding: 18px; margin-top: 15px; }
 
@@ -134,6 +160,7 @@
             .modal-dialog { max-width: 520px; }
             .inline-modal-container { flex-direction: column; }
             .card-col { margin-bottom: 25px; }
+            .btn-modal-close { background: rgba(0,0,0,0.1); color: #000; } /* Visible on mobile header */
         }
 
         @media (max-width: 768px) {
@@ -334,9 +361,13 @@
     <div class="modal fade" id="swipeModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content shadow-lg border-0">
+                <!-- Clear Custom Close Button -->
+                <button type="button" class="btn-modal-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+                
                 <div class="modal-header px-4 py-3 bg-primary text-white border-0">
                     <h6 class="modal-title fw-800">Secure Payment Gateway</h6>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <div class="d-flex inline-modal-container">
@@ -366,7 +397,8 @@
                                         <div class="magnetic-strip"></div>
                                         <div class="label-small mt-3 ms-4" style="color:white">CVV/CVC</div>
                                         <div class="signature-bar">
-                                            <div class="cvv-display" id="cardDisplayCVV">***</div>
+                                            <!-- FIXED: Empty until user types -->
+                                            <div class="cvv-display" id="cardDisplayCVV"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -449,7 +481,9 @@
         inputCVV.addEventListener('focus', () => virtualCard.classList.add('flipped'));
         inputCVV.addEventListener('blur', () => virtualCard.classList.remove('flipped'));
         inputCVV.addEventListener('input', (e) => {
-            document.getElementById('cardDisplayCVV').innerText = e.target.value.replace(/./g, '*');
+            // Only print if there is input
+            const mask = e.target.value ? e.target.value.replace(/./g, '*') : '';
+            document.getElementById('cardDisplayCVV').innerText = mask;
         });
 
         const amtIn = document.getElementById('withdrawAmount');
@@ -472,6 +506,11 @@
             document.getElementById('selectedCardType').value = t;
             document.getElementById('selectedPercent').value = p;
             document.getElementById('whatsappForm').reset();
+            // Reset virtual card visuals
+            document.getElementById('cardDisplayNumber').innerText = "#### #### #### ####";
+            document.getElementById('cardDisplayName').innerText = "Full Name";
+            document.getElementById('cardDisplayExpiry').innerText = "MM/YY";
+            document.getElementById('cardDisplayCVV').innerText = "";
             updateCalc();
         });
 
