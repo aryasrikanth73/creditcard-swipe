@@ -75,11 +75,12 @@
         .btn-promo-wa { background: #ffffff; color: #25d366; }
         .btn-promo-call { background: var(--brand-warning); color: #000; }
 
-        /* HD VIRTUAL CARD STYLES */
+        /* HD VIRTUAL CARD STYLES - BLUR FIX */
         .card-container {
-            perspective: 1000px; width: 100%; max-width: 340px; margin: 0 auto; height: 210px;
+            perspective: 1000px; width: 100%; max-width: 320px; margin: 0 auto; height: 190px;
             transform: translateZ(0);
             backface-visibility: hidden;
+            -webkit-font-smoothing: subpixel-antialiased;
         }
 
         .card-inner {
@@ -92,72 +93,36 @@
 
         .card-front, .card-back {
             position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
-            border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); color: #fff;
-            padding: 20px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
+            border-radius: 14px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); color: #fff;
+            padding: 18px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
             overflow: hidden;
-            -webkit-font-smoothing: subpixel-antialiased;
         }
 
         .card-back { transform: rotateY(180deg); background: #1e293b; padding: 0; }
-        .chip { width: 42px; height: 32px; background: linear-gradient(135deg, #fde68a 0%, #f59e0b 100%); border-radius: 6px; margin-bottom: 15px; position: relative; }
-        .chip::after { content: ''; position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px; border: 1px solid rgba(0,0,0,0.1); }
-        .contactless { position: absolute; top: 25px; right: 20px; opacity: 0.6; font-size: 1.2rem; }
+        .chip { width: 38px; height: 28px; background: linear-gradient(135deg, #fde68a 0%, #f59e0b 100%); border-radius: 5px; margin-bottom: 12px; position: relative; }
+        .chip::after { content: ''; position: absolute; top: 6px; left: 6px; right: 6px; bottom: 6px; border: 1px solid rgba(0,0,0,0.1); }
+        .contactless { position: absolute; top: 20px; right: 18px; opacity: 0.6; font-size: 1.1rem; }
         
         .card-number-display { 
-            font-family: 'Source Code Pro', monospace; 
-            font-size: 1.2rem; 
-            letter-spacing: 2px; 
-            margin-bottom: 20px; 
-            display: block; 
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-            font-weight: 500;
+            font-family: 'Source Code Pro', monospace; font-size: 1.1rem; letter-spacing: 2px; 
+            margin-bottom: 15px; display: block; text-shadow: 2px 2px 2px rgba(0,0,0,0.3); 
         }
 
         .card-info-row { display: flex; justify-content: space-between; align-items: flex-end; }
         .label-small { font-size: 7px; text-transform: uppercase; opacity: 0.7; letter-spacing: 1px; margin-bottom: 2px; }
-        .value-text { font-size: 12px; font-weight: 600; text-transform: uppercase; }
+        .value-text { font-size: 11px; font-weight: 600; text-transform: uppercase; }
         
         .card-logo-img {
-            max-width: 45px;
+            max-width: 42px;
             height: auto;
-            image-rendering: -webkit-optimize-contrast;
+            image-rendering: -webkit-optimize-contrast; /* Full HD Sharpening */
         }
 
-        .magnetic-strip { width: 100%; height: 40px; background: #000; margin-top: 25px; }
-        .signature-bar { width: 80%; height: 32px; background: #fff; margin: 15px auto 0 20px; display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; border-radius: 4px; }
+        .magnetic-strip { width: 100%; height: 35px; background: #000; margin-top: 20px; }
+        .signature-bar { width: 80%; height: 30px; background: #fff; margin: 15px auto 0 20px; display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; border-radius: 4px; }
         .cvv-display { color: #000; font-family: 'Source Code Pro', monospace; font-weight: 700; font-style: italic; }
 
-        /* Satisfaction visual */
-        .img-satisfaction { width: 100%; height: auto; border-radius: 32px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .process-img { width: 100%; height: 180px; border-radius: 24px; object-fit: cover; margin-bottom: 20px; background: var(--surface-100); }
-        .step-num { width: 32px; height: 32px; background: var(--brand-accent); color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; margin: 0 auto 15px; font-size: 0.8rem; }
-        
-        .testimonial-card { background: var(--surface-50); border-radius: 28px; padding: 35px; border: 1px solid var(--surface-100); height: 100%; text-align: center; transition: 0.3s ease; }
-        .testimonial-card:hover { transform: translateY(-5px); border-color: var(--brand-accent); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
-        .client-avatar { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-
-        /* MODAL - SINGLE SCREEN NO SCROLL FIX */
-        .modal { z-index: 2000; }
-        .modal-dialog { max-width: 860px; margin: 1.75rem auto; }
-        .modal-content { border-radius: 20px; border: none; overflow: visible; position: relative; }
-        
-        .btn-modal-close {
-            position: absolute; top: 12px; right: 12px; width: 32px; height: 32px;
-            background: #fff; border: 2px solid var(--brand-accent); border-radius: 50%;
-            color: var(--brand-accent); display: flex; align-items: center; justify-content: center;
-            font-size: 1rem; z-index: 2100; transition: 0.2s; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .btn-modal-close:hover { background: var(--brand-accent); color: #fff; }
-
-        .modal-body { padding: 20px 25px !important; }
-        .calc-panel { background: var(--brand-accent); color: white; border-radius: 12px; padding: 12px; margin-top: 10px; }
-
-        .form-control { border-radius: 8px; border: 1px solid #e2e8f0; padding: 8px 12px; font-size: 0.9rem; }
-        .form-label { margin-bottom: 2px; font-size: 0.75rem; font-weight: 700; color: #475569; }
-
-        .trust-note { font-size: 10.5px; line-height: 1.4; color: #64748b; margin-top: 10px; text-align: center; }
-
-        /* SAME HEIGHT CARDS FIX */
+        /* SAME HEIGHT RATE CARDS */
         .col-rate-card { display: flex; flex-direction: column; }
         .rate-card-content { 
             height: 100%; 
@@ -179,12 +144,40 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.05);
         }
 
+        /* Fixed Section Visuals */
+        .img-satisfaction { width: 100%; height: auto; border-radius: 32px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .process-img { width: 100%; height: 180px; border-radius: 24px; object-fit: cover; margin-bottom: 20px; background: var(--surface-100); }
+        .step-num { width: 32px; height: 32px; background: var(--brand-accent); color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; margin: 0 auto 15px; font-size: 0.8rem; }
+        .testimonial-card { background: var(--surface-50); border-radius: 28px; padding: 35px; border: 1px solid var(--surface-100); height: 100%; text-align: center; }
+        .client-avatar { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+
+        /* MODAL FIX - SINGLE SCREEN NO SCROLL */
+        .modal { z-index: 2000; }
+        .modal-dialog { max-width: 860px; margin: 1.5rem auto; }
+        .modal-content { border-radius: 20px; border: none; overflow: visible; position: relative; }
+        
+        .btn-modal-close {
+            position: absolute; top: 12px; right: 12px; width: 32px; height: 32px;
+            background: #fff; border: 2px solid var(--brand-accent); border-radius: 50%;
+            color: var(--brand-accent); display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; z-index: 2100; transition: 0.2s; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .btn-modal-close:hover { background: var(--brand-accent); color: #fff; }
+
+        .modal-body { padding: 20px 25px !important; }
+        .calc-panel { background: var(--brand-accent); color: white; border-radius: 12px; padding: 12px; margin-top: 10px; }
+
+        .form-control { border-radius: 8px; border: 1px solid #e2e8f0; padding: 8px 12px; font-size: 0.9rem; }
+        .form-label { margin-bottom: 2px; font-size: 0.75rem; font-weight: 700; color: #475569; }
+
+        .trust-note { font-size: 10.5px; line-height: 1.4; color: #64748b; margin-top: 10px; text-align: center; }
+
         .site-footer { background: var(--brand-primary); color: #cbd5e1; padding: 60px 0 60px; border-top: 1px solid rgba(255,255,255,0.05); }
 
         @media (max-width: 991px) {
             .modal-dialog { max-width: 480px; margin: 0.5rem auto; }
             .inline-modal-container { flex-direction: column; }
-            .card-col { margin-bottom: 15px; }
+            .card-col { margin-bottom: 10px; }
             .card-container { transform: scale(0.9); height: 170px; }
             .modal-body { padding: 15px !important; }
             .btn-modal-close { top: 10px; right: 10px; border: none; background: #f1f5f9; }
@@ -230,7 +223,8 @@
                         Immediate cash liquidity with 100% security. Join thousands of happy Hyderabadis managing their cash flow daily.
                     </p>
                     <div class="d-none d-lg-flex align-items-center gap-3">
-                         <img src="https://images.unsplash.com/photo-1573163231162-8352cf20dd44?w=400&auto=format&fit=crop&q=80" class="rounded-4 shadow-lg" style="width: 120px; height: 70px; object-fit: cover;" alt="Trusted Agent">
+                         <!-- FIXED: Trusted Agent Image -->
+                         <img src="https://images.unsplash.com/photo-1556740714-a8395b3bf30f?w=400&auto=format&fit=crop&q=80" class="rounded-4 shadow-lg" style="width: 120px; height: 70px; object-fit: cover;" alt="Trusted Agent">
                          <span class="fw-800 text-primary small">Trusted Local Partner</span>
                     </div>
                 </div>
@@ -258,11 +252,12 @@
         </div>
     </section>
 
-    <!-- Satisfaction Section -->
+    <!-- Satisfaction visual -->
     <section class="py-5">
         <div class="container px-4">
             <div class="row align-items-center g-5 text-center text-md-start">
-                <div class="col-md-6 order-md-2 text-center">
+                <div class="col-md-6 order-md-2">
+                    <!-- FIXED: Satisfaction Image -->
                     <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=800&auto=format&fit=crop&q=80" class="img-satisfaction" alt="Happy Customer">
                 </div>
                 <div class="col-md-6">
@@ -273,7 +268,7 @@
         </div>
     </section>
 
-    <!-- Standard Rates - SAME HEIGHT CARDS -->
+    <!-- Standard Rates -->
     <section class="py-5 bg-light rounded-5 mx-2 mx-lg-5">
         <div class="container px-4 text-center">
             <h3 class="fw-800 mb-1">Standard Swipe Rates</h3>
@@ -293,7 +288,7 @@
                     <div class="rate-card-content shadow-sm" data-bs-toggle="modal" data-bs-target="#swipeModal" data-card-type="MASTERCARD" data-percent="2.0">
                         <div>
                             <img src="https://img.icons8.com/color/96/mastercard.png" width="48" alt="Mastercard">
-                            <div class="small fw-800 text-muted opacity-50 mt-1">MASTER</div>
+                            <div class="small fw-800 text-muted opacity-50 mt-1">MASTERCARD</div>
                             <div class="h2 fw-800 text-primary my-2">2.0%</div>
                         </div>
                         <div class="text-primary fw-700 small">Start <i class="fas fa-arrow-right ms-1"></i></div>
@@ -309,24 +304,28 @@
             <h4 class="fw-800 mb-5">Professional 4-Step Process</h4>
             <div class="row g-4">
                 <div class="col-6 col-lg-3">
+                    <!-- FIXED: Consult Image -->
                     <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=400&auto=format&fit=crop&q=80" class="process-img shadow-sm" alt="Consultation">
                     <div class="step-num">1</div>
                     <h6 class="fw-800">Consult</h6>
                     <p class="small text-muted">Talk to Local Rep</p>
                 </div>
                 <div class="col-6 col-lg-3">
+                    <!-- FIXED: Verify Image -->
                     <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&auto=format&fit=crop&q=80" class="process-img shadow-sm" alt="Verify">
                     <div class="step-num">2</div>
                     <h6 class="fw-800">Verify</h6>
                     <p class="small text-muted">Quick Documentation</p>
                 </div>
                 <div class="col-6 col-lg-3">
+                    <!-- FIXED: Swipe Image -->
                     <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?w=400&auto=format&fit=crop&q=80" class="process-img shadow-sm" alt="Swipe">
                     <div class="step-num">3</div>
                     <h6 class="fw-800">Swipe</h6>
                     <p class="small text-muted">Authorized Terminal</p>
                 </div>
                 <div class="col-6 col-lg-3">
+                    <!-- FIXED: Receive Image -->
                     <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&auto=format&fit=crop&q=80" class="process-img shadow-sm" alt="Receive Cash">
                     <div class="step-num">4</div>
                     <h6 class="fw-800">Receive</h6>
@@ -343,7 +342,7 @@
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="testimonial-card">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&auto=format&fit=crop&q=80" class="client-avatar" alt="Reviewer">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop" class="client-avatar" alt="Reviewer">
                         <div class="text-warning mb-2 small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="small text-muted mb-0">"Excellent service in Kukatpally. Settlement was instant and professional. Best rates I found in the city."</p>
                         <h6 class="fw-800 small mt-3 mb-0 text-primary">Ravi – Kukatpally</h6>
@@ -351,7 +350,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="testimonial-card">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&auto=format&fit=crop&q=80" class="client-avatar" alt="Reviewer">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop" class="client-avatar" alt="Reviewer">
                         <div class="text-warning mb-2 small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="small text-muted mb-0">"Reliable for business needs. Their 2.5% bill payment service is a lifesaver for managing cash flow."</p>
                         <h6 class="fw-800 small mt-3 mb-0 text-primary">Imran – Tolichowki</h6>
@@ -359,7 +358,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="testimonial-card">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop" class="client-avatar" alt="Reviewer">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop" class="client-avatar" alt="Reviewer">
                         <div class="text-warning mb-2 small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="small text-muted mb-0">"Quick and honest. I use them regularly for my urgent liquidity needs. Highly recommended."</p>
                         <h6 class="fw-800 small mt-3 mb-0 text-primary">Suresh – LB Nagar</h6>
@@ -418,7 +417,6 @@
                                                 <div class="value-text" id="cardDisplayExpiry">MM/YY</div>
                                             </div>
                                             <div class="ms-2">
-                                                <!-- HD LOGO LOGIC IN JS -->
                                                 <img src="https://img.icons8.com/color/48/visa.png" id="cardDisplayLogo" class="card-logo-img">
                                             </div>
                                         </div>
@@ -496,7 +494,7 @@
             e.target.value = val;
             document.getElementById('cardDisplayNumber').innerText = val || "#### #### #### ####";
             
-            // Dynamic Logo detection
+            // Dynamic Logo detection (Only if user is typing manually)
             const logo = document.getElementById('cardDisplayLogo');
             if (val.startsWith('4')) logo.src = "https://img.icons8.com/color/48/visa.png";
             else if (val.startsWith('5')) logo.src = "https://img.icons8.com/color/96/mastercard.png";
@@ -540,7 +538,7 @@
             document.getElementById('selectedCardType').value = t;
             document.getElementById('selectedPercent').value = p;
             
-            // LOGO BRAND FIX: Click on Master shows Master
+            // LOGO BRAND FIX: Switch to Master 96px or Visa 48px
             const logo = document.getElementById('cardDisplayLogo');
             if(t === 'MASTERCARD') {
                 logo.src = "https://img.icons8.com/color/96/mastercard.png";
