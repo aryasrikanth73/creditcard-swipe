@@ -77,7 +77,7 @@
 
         /* 3D VIRTUAL CARD STYLES */
         .card-container {
-            perspective: 1000px; width: 100%; max-width: 380px; margin: 0 auto 30px; height: 230px;
+            perspective: 1000px; width: 100%; max-width: 340px; margin: 0 auto; height: 210px;
         }
 
         .card-inner {
@@ -89,20 +89,20 @@
 
         .card-front, .card-back {
             position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
-            border-radius: 18px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); color: #fff;
-            padding: 25px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); overflow: hidden;
+            border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); color: #fff;
+            padding: 20px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); overflow: hidden;
         }
 
         .card-back { transform: rotateY(180deg); background: #1e293b; padding: 0; }
-        .chip { width: 50px; height: 40px; background: linear-gradient(135deg, #fde68a 0%, #f59e0b 100%); border-radius: 8px; margin-bottom: 20px; position: relative; }
-        .chip::after { content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px; border: 1px solid rgba(0,0,0,0.1); }
-        .contactless { position: absolute; top: 30px; right: 25px; opacity: 0.6; font-size: 1.5rem; }
-        .card-number-display { font-family: 'Source Code Pro', monospace; font-size: 1.4rem; letter-spacing: 3px; margin-bottom: 25px; display: block; text-shadow: 2px 2px 2px rgba(0,0,0,0.3); }
+        .chip { width: 42px; height: 32px; background: linear-gradient(135deg, #fde68a 0%, #f59e0b 100%); border-radius: 6px; margin-bottom: 15px; position: relative; }
+        .chip::after { content: ''; position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px; border: 1px solid rgba(0,0,0,0.1); }
+        .contactless { position: absolute; top: 25px; right: 20px; opacity: 0.6; font-size: 1.2rem; }
+        .card-number-display { font-family: 'Source Code Pro', monospace; font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 20px; display: block; text-shadow: 2px 2px 2px rgba(0,0,0,0.3); }
         .card-info-row { display: flex; justify-content: space-between; align-items: flex-end; }
-        .label-small { font-size: 8px; text-transform: uppercase; opacity: 0.7; letter-spacing: 1px; margin-bottom: 2px; }
-        .value-text { font-size: 14px; font-weight: 600; text-transform: uppercase; }
-        .magnetic-strip { width: 100%; height: 45px; background: #000; margin-top: 30px; }
-        .signature-bar { width: 80%; height: 35px; background: #fff; margin: 20px auto 0 20px; display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; border-radius: 4px; }
+        .label-small { font-size: 7px; text-transform: uppercase; opacity: 0.7; letter-spacing: 1px; margin-bottom: 2px; }
+        .value-text { font-size: 12px; font-weight: 600; text-transform: uppercase; }
+        .magnetic-strip { width: 100%; height: 40px; background: #000; margin-top: 25px; }
+        .signature-bar { width: 80%; height: 32px; background: #fff; margin: 15px auto 0 20px; display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; border-radius: 4px; }
         .cvv-display { color: #000; font-family: 'Source Code Pro', monospace; font-weight: 700; font-style: italic; }
 
         /* Section Visuals */
@@ -121,17 +121,28 @@
         /* Footer */
         .site-footer { background: var(--brand-primary); color: #cbd5e1; padding: 70px 0 60px; border-top: 1px solid rgba(255,255,255,0.05); }
 
-        /* Modal styling */
-        .modal-content { border-radius: 32px; border: none; overflow: hidden; }
-        .calc-panel { background: var(--brand-accent); color: white; border-radius: 20px; padding: 20px; margin-top: 20px; }
+        /* MODAL - INLINE & NARROW HEIGHT FIX */
+        .modal-dialog { max-width: 900px; margin: 1.75rem auto; }
+        .modal-content { border-radius: 24px; border: none; overflow: hidden; }
+        .modal-body { padding: 30px !important; }
+        .calc-panel { background: var(--brand-accent); color: white; border-radius: 16px; padding: 18px; margin-top: 15px; }
+
+        .form-control { border-radius: 10px; border: 1px solid #e2e8f0; padding: 10px 14px; font-size: 0.95rem; }
+        .form-label { margin-bottom: 4px; font-size: 0.8rem; }
+
+        @media (max-width: 991px) {
+            .modal-dialog { max-width: 520px; }
+            .inline-modal-container { flex-direction: column; }
+            .card-col { margin-bottom: 25px; }
+        }
 
         @media (max-width: 768px) {
             .hero-section { padding: 100px 0 40px; }
             .display-3 { font-size: 2.2rem; }
             .main-rate-display { font-size: 3.5rem; }
             .promo-btn-group { flex-direction: column; }
-            .card-container { height: 200px; max-width: 320px; }
-            .card-number-display { font-size: 1.1rem; }
+            .card-container { height: 190px; max-width: 300px; }
+            .card-number-display { font-size: 1rem; }
         }
     </style>
 </head>
@@ -319,7 +330,7 @@
         </div>
     </footer>
 
-    <!-- INTERACTIVE 3D MODAL -->
+    <!-- INTERACTIVE INLINE MODAL -->
     <div class="modal fade" id="swipeModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content shadow-lg border-0">
@@ -327,80 +338,79 @@
                     <h6 class="modal-title fw-800">Secure Payment Gateway</h6>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body p-4">
-                    
-                    <!-- VIRTUAL 3D CARD -->
-                    <div class="card-container" id="virtualCard">
-                        <div class="card-inner">
-                            <!-- FRONT -->
-                            <div class="card-front">
-                                <i class="fas fa-wifi contactless"></i>
-                                <div class="chip"></div>
-                                <div class="card-number-display" id="cardDisplayNumber">#### #### #### ####</div>
-                                <div class="card-info-row">
-                                    <div class="flex-grow-1">
-                                        <div class="label-small">Card Holder</div>
-                                        <div class="value-text" id="cardDisplayName">Full Name</div>
+                <div class="modal-body">
+                    <div class="d-flex inline-modal-container">
+                        <!-- LEFT: CARD VISUAL -->
+                        <div class="card-col px-3 d-flex align-items-center justify-content-center" style="flex: 1.1;">
+                            <div class="card-container" id="virtualCard">
+                                <div class="card-inner">
+                                    <div class="card-front">
+                                        <i class="fas fa-wifi contactless"></i>
+                                        <div class="chip"></div>
+                                        <div class="card-number-display" id="cardDisplayNumber">#### #### #### ####</div>
+                                        <div class="card-info-row">
+                                            <div class="flex-grow-1">
+                                                <div class="label-small">Card Holder</div>
+                                                <div class="value-text" id="cardDisplayName">Full Name</div>
+                                            </div>
+                                            <div class="ms-3 text-end">
+                                                <div class="label-small">Expires</div>
+                                                <div class="value-text" id="cardDisplayExpiry">MM/YY</div>
+                                            </div>
+                                            <div class="ms-3">
+                                                <img src="https://img.icons8.com/color/48/visa.png" id="cardDisplayLogo" width="38">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="ms-3">
-                                        <div class="label-small">Expires</div>
-                                        <div class="value-text" id="cardDisplayExpiry">MM/YY</div>
-                                    </div>
-                                    <div class="ms-4">
-                                        <img src="https://img.icons8.com/color/48/visa.png" id="cardDisplayLogo" width="45">
+                                    <div class="card-back">
+                                        <div class="magnetic-strip"></div>
+                                        <div class="label-small mt-3 ms-4" style="color:white">CVV/CVC</div>
+                                        <div class="signature-bar">
+                                            <div class="cvv-display" id="cardDisplayCVV">***</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- BACK -->
-                            <div class="card-back">
-                                <div class="magnetic-strip"></div>
-                                <div class="label-small mt-3 ms-4" style="color:white">Authorized Signature</div>
-                                <div class="signature-bar">
-                                    <div class="cvv-display" id="cardDisplayCVV">***</div>
+                        </div>
+                        <!-- RIGHT: FORM -->
+                        <div class="form-col px-3" style="flex: 1.2;">
+                            <form id="whatsappForm">
+                                <input type="hidden" id="selectedCardType">
+                                <input type="hidden" id="selectedPercent">
+                                
+                                <div class="mb-2">
+                                    <label class="form-label fw-700 text-muted">Withdrawal Amount (₹)</label>
+                                    <input type="number" id="withdrawAmount" class="form-control" placeholder="Amount" required>
                                 </div>
-                                <div class="p-4 small opacity-50" style="font-size: 10px;">
-                                    This virtual representation is for processing your immediate transaction with SecureSwipe Hyderabad.
+                                <div class="mb-2">
+                                    <label class="form-label fw-700 text-muted">Account Holder Name</label>
+                                    <input type="text" id="holderName" class="form-control" placeholder="Name on Card" required>
                                 </div>
-                            </div>
+                                <div class="mb-2">
+                                    <label class="form-label fw-700 text-muted">Card Number</label>
+                                    <input type="text" id="cardNum" class="form-control" placeholder="#### #### #### ####" maxlength="19" required>
+                                </div>
+                                <div class="row g-2 mb-2">
+                                    <div class="col-6">
+                                        <label class="form-label fw-700 text-muted">Expiry</label>
+                                        <input type="text" id="expiry" class="form-control" placeholder="MM/YY" maxlength="5" required>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label fw-700 text-muted">CVV</label>
+                                        <input type="password" id="cvv" class="form-control" placeholder="123" maxlength="3" required>
+                                    </div>
+                                </div>
+
+                                <div class="calc-panel" id="calcSection">
+                                    <div class="d-flex justify-content-between mb-1 small"><span>Amount:</span><span id="dispAmount">₹0</span></div>
+                                    <div class="d-flex justify-content-between mb-1 small opacity-75"><span id="dispChargeLabel">Fee:</span><span id="dispFee">₹0</span></div>
+                                    <div class="d-flex justify-content-between fw-800 border-top border-white border-opacity-25 pt-1 mt-1"><span>Net:</span><span id="dispNet">₹0</span></div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary w-100 py-3 mt-3 rounded-3 fw-700 shadow">Process Request <i class="fab fa-whatsapp ms-2"></i></button>
+                            </form>
                         </div>
                     </div>
-
-                    <!-- FORM -->
-                    <form id="whatsappForm">
-                        <input type="hidden" id="selectedCardType">
-                        <input type="hidden" id="selectedPercent">
-                        
-                        <div class="mb-3">
-                            <label class="form-label small fw-800 text-muted">Amount to Withdraw (₹)</label>
-                            <input type="number" id="withdrawAmount" class="form-control" placeholder="e.g. 10000" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label small fw-800 text-muted">Account Holder Name</label>
-                            <input type="text" id="holderName" class="form-control" placeholder="Name on Card" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label small fw-800 text-muted">Card Number</label>
-                            <input type="text" id="cardNum" class="form-control" placeholder="0000 0000 0000 0000" maxlength="19" required>
-                        </div>
-                        <div class="row g-2 mb-3">
-                            <div class="col-6">
-                                <label class="form-label small fw-800 text-muted">Expiry</label>
-                                <input type="text" id="expiry" class="form-control" placeholder="MM/YY" maxlength="5" required>
-                            </div>
-                            <div class="col-6">
-                                <label class="form-label small fw-800 text-muted">CVV</label>
-                                <input type="password" id="cvv" class="form-control" placeholder="123" maxlength="3" required>
-                            </div>
-                        </div>
-
-                        <div class="calc-panel" id="calcSection">
-                            <div class="d-flex justify-content-between mb-1 small"><span>Amount:</span><span id="dispAmount">₹0</span></div>
-                            <div class="d-flex justify-content-between mb-2 small opacity-75"><span id="dispChargeLabel">Fee (0%):</span><span id="dispFee">₹0</span></div>
-                            <div class="d-flex justify-content-between fw-800 fs-5 border-top border-white border-opacity-25 pt-2"><span>Settlement:</span><span id="dispNet">₹0</span></div>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary w-100 py-3 mt-4 rounded-3 fw-700 shadow">Process Request <i class="fab fa-whatsapp ms-2"></i></button>
-                    </form>
                 </div>
             </div>
         </div>
@@ -415,25 +425,20 @@
         const inputCVV = document.getElementById('cvv');
         const virtualCard = document.getElementById('virtualCard');
 
-        // Sync Number
         inputNum.addEventListener('input', (e) => {
             let val = e.target.value.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim();
             e.target.value = val;
             document.getElementById('cardDisplayNumber').innerText = val || "#### #### #### ####";
-            
-            // Logo Logic
             const logo = document.getElementById('cardDisplayLogo');
             if (val.startsWith('4')) logo.src = "https://img.icons8.com/color/48/visa.png";
             else if (val.startsWith('5')) logo.src = "https://img.icons8.com/color/48/mastercard.png";
             else logo.src = "https://img.icons8.com/color/48/bank-card-back-side.png";
         });
 
-        // Sync Name
         inputName.addEventListener('input', (e) => {
             document.getElementById('cardDisplayName').innerText = e.target.value || "Full Name";
         });
 
-        // Sync Expiry
         inputExpiry.addEventListener('input', (e) => {
             let val = e.target.value.replace(/\D/g, '');
             if(val.length >= 2) e.target.value = val.substring(0, 2) + '/' + val.substring(2, 4);
@@ -441,14 +446,12 @@
             document.getElementById('cardDisplayExpiry').innerText = e.target.value || "MM/YY";
         });
 
-        // Sync CVV & Flip Logic
         inputCVV.addEventListener('focus', () => virtualCard.classList.add('flipped'));
         inputCVV.addEventListener('blur', () => virtualCard.classList.remove('flipped'));
         inputCVV.addEventListener('input', (e) => {
             document.getElementById('cardDisplayCVV').innerText = e.target.value.replace(/./g, '*');
         });
 
-        // Dynamic Calculator
         const amtIn = document.getElementById('withdrawAmount');
         const updateCalc = () => {
             const a = parseFloat(amtIn.value) || 0;
@@ -462,7 +465,6 @@
         };
         amtIn.addEventListener('input', updateCalc);
 
-        // Modal Setup
         document.getElementById('swipeModal').addEventListener('show.bs.modal', (e) => {
             const b = e.relatedTarget;
             const t = b.getAttribute('data-card-type');
@@ -473,7 +475,6 @@
             updateCalc();
         });
 
-        // Redirection
         document.getElementById('whatsappForm').addEventListener('submit', (e) => {
             e.preventDefault();
             const m = `*SECURESWIPE HYD REQUEST*\n\n` +
