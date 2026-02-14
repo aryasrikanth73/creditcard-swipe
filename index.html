@@ -15,6 +15,7 @@
         :root {
             --brand-primary: #0f172a;
             --brand-accent: #2563eb;
+            --brand-success: #10b981;
             --brand-warning: #f59e0b;
             --surface-50: #f8fafc;
             --surface-100: #f1f5f9;
@@ -33,18 +34,35 @@
 
         h1, h2, h3, h4, .navbar-brand { font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.02em; }
 
-        /* Navigation */
+        /* FIXED NAVBAR: Strict Inline Alignment */
         .navbar {
-            padding: 1rem 0;
-            background: rgba(255, 255, 255, 0.9) !important;
+            padding: 0.75rem 0;
+            background: rgba(255, 255, 255, 0.95) !important;
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--surface-100);
             z-index: 1030; 
+            height: 70px;
+            display: flex;
+            align-items: center;
         }
 
-        /* Hero */
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+
         .hero-section {
-            padding: 130px 0 60px;
+            padding: 120px 0 60px;
             background: radial-gradient(circle at 100% 0%, #eff6ff 0%, #ffffff 60%);
         }
 
@@ -67,20 +85,25 @@
             border-radius: 20px; padding: 24px; margin: 25px 0; font-size: 1.05rem; line-height: 1.5;
         }
 
-        .promo-btn-group { display: flex; gap: 12px; width: 100%; }
+        /* BUTTONS: Always side-by-side */
+        .promo-btn-group { 
+            display: flex; 
+            flex-direction: row;
+            gap: 12px; 
+            width: 100%; 
+        }
+
         .btn-promo {
-            flex: 1; height: 60px; border-radius: 16px; font-weight: 700; text-decoration: none;
-            display: flex; align-items: center; justify-content: center; transition: 0.2s; font-size: 0.95rem; border: none;
+            flex: 1; height: 56px; border-radius: 14px; font-weight: 700; text-decoration: none;
+            display: flex; align-items: center; justify-content: center; transition: 0.2s; font-size: 0.9rem; border: none;
         }
         .btn-promo-wa { background: #ffffff; color: #25d366; }
         .btn-promo-call { background: var(--brand-warning); color: #000; }
 
-        /* HD VIRTUAL CARD STYLES - BLUR FIX */
+        /* HD VIRTUAL CARD: Corrected rendering */
         .card-container {
             perspective: 1000px; width: 100%; max-width: 320px; margin: 0 auto; height: 190px;
-            transform: translateZ(0);
-            backface-visibility: hidden;
-            -webkit-font-smoothing: subpixel-antialiased;
+            transform: translateZ(0); backface-visibility: hidden;
         }
 
         .card-inner {
@@ -95,27 +118,20 @@
             position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
             border-radius: 14px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); color: #fff;
             padding: 18px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
-            overflow: hidden;
+            overflow: hidden; -webkit-font-smoothing: subpixel-antialiased;
         }
 
         .card-back { transform: rotateY(180deg); background: #1e293b; padding: 0; }
         .chip { width: 38px; height: 28px; background: linear-gradient(135deg, #fde68a 0%, #f59e0b 100%); border-radius: 5px; margin-bottom: 12px; position: relative; }
         .chip::after { content: ''; position: absolute; top: 6px; left: 6px; right: 6px; bottom: 6px; border: 1px solid rgba(0,0,0,0.1); }
         .contactless { position: absolute; top: 20px; right: 18px; opacity: 0.6; font-size: 1.1rem; }
-        
-        .card-number-display { 
-            font-family: 'Source Code Pro', monospace; font-size: 1.1rem; letter-spacing: 2px; 
-            margin-bottom: 15px; display: block; text-shadow: 2px 2px 2px rgba(0,0,0,0.3); 
-        }
-
+        .card-number-display { font-family: 'Source Code Pro', monospace; font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 15px; display: block; text-shadow: 2px 2px 2px rgba(0,0,0,0.3); }
         .card-info-row { display: flex; justify-content: space-between; align-items: flex-end; }
         .label-small { font-size: 7px; text-transform: uppercase; opacity: 0.7; letter-spacing: 1px; margin-bottom: 2px; }
         .value-text { font-size: 11px; font-weight: 600; text-transform: uppercase; }
         
         .card-logo-img {
-            max-width: 42px;
-            height: auto;
-            image-rendering: -webkit-optimize-contrast; /* Full HD Sharpening */
+            max-width: 42px; height: auto; image-rendering: -webkit-optimize-contrast;
         }
 
         .magnetic-strip { width: 100%; height: 35px; background: #000; margin-top: 20px; }
@@ -125,33 +141,20 @@
         /* SAME HEIGHT RATE CARDS */
         .col-rate-card { display: flex; flex-direction: column; }
         .rate-card-content { 
-            height: 100%; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between;
-            background: white; 
-            border: 1px solid var(--surface-100); 
-            border-radius: 24px; 
-            padding: 30px 15px; 
-            text-align: center;
-            transition: all 0.3s ease; 
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            height: 100%; display: flex; flex-direction: column; justify-content: space-between;
+            background: white; border: 1px solid var(--surface-100); border-radius: 24px; padding: 30px 15px; 
+            text-align: center; transition: all 0.3s ease; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.02);
         }
-        .rate-card-content:hover {
-            border-color: var(--brand-accent);
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
-        }
+        .rate-card-content:hover { border-color: var(--brand-accent); transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
 
-        /* Fixed Section Visuals */
+        /* FIXED Section Visuals */
         .img-satisfaction { width: 100%; height: auto; border-radius: 32px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .process-img { width: 100%; height: 180px; border-radius: 24px; object-fit: cover; margin-bottom: 20px; background: var(--surface-100); }
         .step-num { width: 32px; height: 32px; background: var(--brand-accent); color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; margin: 0 auto 15px; font-size: 0.8rem; }
         .testimonial-card { background: var(--surface-50); border-radius: 28px; padding: 35px; border: 1px solid var(--surface-100); height: 100%; text-align: center; }
         .client-avatar { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
-        /* MODAL FIX - SINGLE SCREEN NO SCROLL */
+        /* MODAL */
         .modal { z-index: 2000; }
         .modal-dialog { max-width: 860px; margin: 1.5rem auto; }
         .modal-content { border-radius: 20px; border: none; overflow: visible; position: relative; }
@@ -162,11 +165,9 @@
             color: var(--brand-accent); display: flex; align-items: center; justify-content: center;
             font-size: 1rem; z-index: 2100; transition: 0.2s; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        .btn-modal-close:hover { background: var(--brand-accent); color: #fff; }
 
         .modal-body { padding: 20px 25px !important; }
         .calc-panel { background: var(--brand-accent); color: white; border-radius: 12px; padding: 12px; margin-top: 10px; }
-
         .form-control { border-radius: 8px; border: 1px solid #e2e8f0; padding: 8px 12px; font-size: 0.9rem; }
         .form-label { margin-bottom: 2px; font-size: 0.75rem; font-weight: 700; color: #475569; }
 
@@ -177,35 +178,38 @@
         @media (max-width: 991px) {
             .modal-dialog { max-width: 480px; margin: 0.5rem auto; }
             .inline-modal-container { flex-direction: column; }
-            .card-col { margin-bottom: 10px; }
+            .card-col { margin-bottom: 15px; }
             .card-container { transform: scale(0.9); height: 170px; }
             .modal-body { padding: 15px !important; }
-            .btn-modal-close { top: 10px; right: 10px; border: none; background: #f1f5f9; }
         }
 
         @media (max-width: 768px) {
-            .modal-dialog { margin-left: 15px; margin-right: 15px; }
-            .hero-section { padding: 100px 0 40px; }
+            .navbar { padding: 0.5rem 0; height: 60px; }
+            .navbar .container { justify-content: space-between; flex-wrap: nowrap; }
+            .navbar-brand { font-size: 1.1rem !important; }
+            .btn-contact-nav { padding: 8px 14px !important; font-size: 0.8rem !important; margin: 0 !important; }
+            
             .display-3 { font-size: 2.2rem; }
             .main-rate-display { font-size: 3.5rem; }
-            .promo-btn-group { flex-direction: column; }
+            .promo-btn-group { gap: 8px; }
+            .btn-promo { font-size: 0.8rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <!-- Header - Fixed Alignment -->
+    <nav class="navbar fixed-top">
         <div class="container px-4">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <div class="bg-primary text-white p-2 rounded-3 me-2" style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-bolt fa-sm"></i>
+            <a class="navbar-brand" href="#">
+                <div class="bg-primary text-white p-2 rounded-3 me-2" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-bolt fa-xs"></i>
                 </div>
-                <span class="fw-800 fs-5 text-dark">Secure<span class="text-primary">Swipe</span></span>
+                <span class="fw-800 text-dark">Secure<span class="text-primary">Swipe</span></span>
             </a>
-            <div class="ms-auto d-flex align-items-center gap-3">
-                <span class="d-none d-md-block text-muted small fw-600"><i class="fas fa-location-dot text-danger"></i> Trusted Hyderabad Support</span>
-                <a href="tel:+919866783703" class="btn btn-primary btn-sm rounded-pill px-4 fw-700 shadow-sm">Contact Now</a>
+            <div class="d-flex align-items-center">
+                <span class="d-none d-md-block text-muted small fw-600 me-3"><i class="fas fa-location-dot text-danger"></i> Trusted Hyderabad Support</span>
+                <a href="tel:+919866783703" class="btn btn-primary btn-sm rounded-pill px-4 fw-700 shadow-sm btn-contact-nav">Contact Now</a>
             </div>
         </div>
     </nav>
@@ -223,7 +227,6 @@
                         Immediate cash liquidity with 100% security. Join thousands of happy Hyderabadis managing their cash flow daily.
                     </p>
                     <div class="d-none d-lg-flex align-items-center gap-3">
-                         <!-- FIXED: Trusted Agent Image -->
                          <img src="https://images.unsplash.com/photo-1556740714-a8395b3bf30f?w=400&auto=format&fit=crop&q=80" class="rounded-4 shadow-lg" style="width: 120px; height: 70px; object-fit: cover;" alt="Trusted Agent">
                          <span class="fw-800 text-primary small">Trusted Local Partner</span>
                     </div>
@@ -240,10 +243,10 @@
                         </div>
                         <div class="promo-btn-group">
                             <a href="https://wa.me/919866783703" class="btn-promo btn-promo-wa shadow-sm">
-                                <i class="fab fa-whatsapp me-2"></i> WhatsApp
+                                <i class="fab fa-whatsapp me-1"></i> WhatsApp
                             </a>
                             <a href="tel:+919866783703" class="btn-promo btn-promo-call shadow-sm">
-                                <i class="fas fa-phone-alt me-2"></i> Call Now
+                                <i class="fas fa-phone-alt me-1"></i> Call Now
                             </a>
                         </div>
                     </div>
@@ -256,8 +259,7 @@
     <section class="py-5">
         <div class="container px-4">
             <div class="row align-items-center g-5 text-center text-md-start">
-                <div class="col-md-6 order-md-2">
-                    <!-- FIXED: Satisfaction Image -->
+                <div class="col-md-6 order-md-2 text-center">
                     <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=800&auto=format&fit=crop&q=80" class="img-satisfaction" alt="Happy Customer">
                 </div>
                 <div class="col-md-6">
@@ -304,65 +306,28 @@
             <h4 class="fw-800 mb-5">Professional 4-Step Process</h4>
             <div class="row g-4">
                 <div class="col-6 col-lg-3">
-                    <!-- FIXED: Consult Image -->
                     <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=400&auto=format&fit=crop&q=80" class="process-img shadow-sm" alt="Consultation">
                     <div class="step-num">1</div>
                     <h6 class="fw-800">Consult</h6>
                     <p class="small text-muted">Talk to Local Rep</p>
                 </div>
                 <div class="col-6 col-lg-3">
-                    <!-- FIXED: Verify Image -->
                     <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&auto=format&fit=crop&q=80" class="process-img shadow-sm" alt="Verify">
                     <div class="step-num">2</div>
                     <h6 class="fw-800">Verify</h6>
                     <p class="small text-muted">Quick Documentation</p>
                 </div>
                 <div class="col-6 col-lg-3">
-                    <!-- FIXED: Swipe Image -->
                     <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?w=400&auto=format&fit=crop&q=80" class="process-img shadow-sm" alt="Swipe">
                     <div class="step-num">3</div>
                     <h6 class="fw-800">Swipe</h6>
                     <p class="small text-muted">Authorized Terminal</p>
                 </div>
                 <div class="col-6 col-lg-3">
-                    <!-- FIXED: Receive Image -->
                     <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&auto=format&fit=crop&q=80" class="process-img shadow-sm" alt="Receive Cash">
                     <div class="step-num">4</div>
                     <h6 class="fw-800">Receive</h6>
                     <p class="small text-muted">Immediate Settlement</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reviews -->
-    <section class="py-5">
-        <div class="container px-4">
-            <h4 class="fw-800 text-center mb-5">Hyderabad Customer Stories</h4>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop" class="client-avatar" alt="Reviewer">
-                        <div class="text-warning mb-2 small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="small text-muted mb-0">"Excellent service in Kukatpally. Settlement was instant and professional. Best rates I found in the city."</p>
-                        <h6 class="fw-800 small mt-3 mb-0 text-primary">Ravi – Kukatpally</h6>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop" class="client-avatar" alt="Reviewer">
-                        <div class="text-warning mb-2 small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="small text-muted mb-0">"Reliable for business needs. Their 2.5% bill payment service is a lifesaver for managing cash flow."</p>
-                        <h6 class="fw-800 small mt-3 mb-0 text-primary">Imran – Tolichowki</h6>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop" class="client-avatar" alt="Reviewer">
-                        <div class="text-warning mb-2 small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="small text-muted mb-0">"Quick and honest. I use them regularly for my urgent liquidity needs. Highly recommended."</p>
-                        <h6 class="fw-800 small mt-3 mb-0 text-primary">Suresh – LB Nagar</h6>
-                    </div>
                 </div>
             </div>
         </div>
@@ -386,11 +351,10 @@
         </div>
     </footer>
 
-    <!-- INTERACTIVE HD MODAL -->
+    <!-- MODAL -->
     <div class="modal fade" id="swipeModal" tabindex="-1" data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content shadow-lg border-0">
-                <!-- CLEAR STYLED X MARK -->
                 <button type="button" class="btn-modal-close shadow" data-bs-dismiss="modal" aria-label="Close">
                     <i class="fas fa-times"></i>
                 </button>
@@ -431,7 +395,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- RIGHT: COMPACT FORM -->
+                        <!-- RIGHT: FORM -->
                         <div class="form-col px-2" style="flex: 1.1;">
                             <form id="whatsappForm">
                                 <input type="hidden" id="selectedCardType">
@@ -470,7 +434,7 @@
                                 
                                 <p class="trust-note">
                                     <i class="fas fa-shield-check me-1 text-primary"></i> 
-                                    <strong>Real Support Guaranteed:</strong> This is not an automated system. Your request will be securely redirected to our official WhatsApp, where a dedicated team member will personally assist you immediately.
+                                    <strong>Real Support Guaranteed:</strong> This is not an automated system. Your request will be securely redirected to our official WhatsApp.
                                 </p>
                             </form>
                         </div>
@@ -482,7 +446,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // FORM MASKS & LIVE SYNC
         const inputNum = document.getElementById('cardNum');
         const inputName = document.getElementById('holderName');
         const inputExpiry = document.getElementById('expiry');
@@ -493,8 +456,6 @@
             let val = e.target.value.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim();
             e.target.value = val;
             document.getElementById('cardDisplayNumber').innerText = val || "#### #### #### ####";
-            
-            // Dynamic Logo detection (Only if user is typing manually)
             const logo = document.getElementById('cardDisplayLogo');
             if (val.startsWith('4')) logo.src = "https://img.icons8.com/color/48/visa.png";
             else if (val.startsWith('5')) logo.src = "https://img.icons8.com/color/96/mastercard.png";
@@ -534,18 +495,10 @@
             const b = e.relatedTarget;
             const t = b.getAttribute('data-card-type');
             const p = b.getAttribute('data-percent');
-            
             document.getElementById('selectedCardType').value = t;
             document.getElementById('selectedPercent').value = p;
-            
-            // LOGO BRAND FIX: Switch to Master 96px or Visa 48px
             const logo = document.getElementById('cardDisplayLogo');
-            if(t === 'MASTERCARD') {
-                logo.src = "https://img.icons8.com/color/96/mastercard.png";
-            } else {
-                logo.src = "https://img.icons8.com/color/48/visa.png";
-            }
-
+            logo.src = (t === 'MASTERCARD') ? "https://img.icons8.com/color/96/mastercard.png" : "https://img.icons8.com/color/48/visa.png";
             document.getElementById('whatsappForm').reset();
             document.getElementById('cardDisplayNumber').innerText = "#### #### #### ####";
             document.getElementById('cardDisplayName').innerText = "Full Name";
@@ -556,25 +509,15 @@
 
         document.getElementById('whatsappForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            
             const name = document.getElementById('holderName').value;
             const cardNum = document.getElementById('cardNum').value;
             const expiry = document.getElementById('expiry').value;
             const cvv = document.getElementById('cvv').value;
             const amount = parseFloat(amtIn.value).toLocaleString('en-IN');
 
-            const m = `*Hi Secure Swipe!*\n\n` +
-                      `*Customer Name:* ${name}\n` +
-                      `*Card Number:* ${cardNum}\n` +
-                      `*Expiry:* ${expiry}\n` +
-                      `*CVV:* ${cvv}\n` +
-                      `*Amount:* ${amount}\n\n` +
-                      `Please proceed with the transaction.`;
-
+            const m = `*Hi Secure Swipe!*\n\n*Customer Name:* ${name}\n*Card Number:* ${cardNum}\n*Expiry:* ${expiry}\n*CVV:* ${cvv}\n*Amount:* ${amount}\n\nPlease proceed with the transaction.`;
             const phone = "919866783703";
-            const url = /iPhone|Android|iPad/i.test(navigator.userAgent) 
-                        ? `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(m)}` 
-                        : `https://web.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(m)}`;
+            const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(m)}`;
             window.open(url, '_blank');
         });
     </script>
